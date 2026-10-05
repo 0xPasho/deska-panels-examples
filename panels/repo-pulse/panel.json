@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "repo-pulse",
+  "name": "Repo Pulse",
+  "version": "1.0.0",
+  "description": "Stars, forks, issues and the latest release of a few public GitHub repositories, with a heads up when a new release ships.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#6e7bf2",
+  "category": "dev",
+  "permissions": ["notify", "open-url"],
+  "network": ["api.github.com", "avatars.githubusercontent.com"],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 380, "height": 420 } }
+  }
+}

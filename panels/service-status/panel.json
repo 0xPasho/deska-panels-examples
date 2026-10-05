@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "id": "service-status",
+  "name": "Service Status",
+  "version": "1.0.0",
+  "description": "Whether Anthropic, OpenAI, GitHub, Cursor, Vercel, Cloudflare and npm are up, from their public status pages.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#2f9e6e",
+  "category": "dev",
+  "permissions": ["notify", "open-url"],
+  "network": [
+    "status.claude.com",
+    "status.openai.com",
+    "www.githubstatus.com",
+    "status.cursor.com",
+    "www.vercel-status.com",
+    "www.cloudflarestatus.com",
+    "status.npmjs.org"
+  ],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 360, "height": 380 } },
+    "extras": { "title": "Service Status" }
+  }
+}

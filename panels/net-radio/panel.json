@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "id": "net-radio",
+  "name": "Net Radio",
+  "version": "1.0.0",
+  "description": "Listen to SomaFM's listener supported internet radio stations, with favorites and the track now playing.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#3f8f8a",
+  "category": "media",
+  "permissions": ["open-url"],
+  "network": [
+    "api.somafm.com",
+    "ice1.somafm.com",
+    "ice2.somafm.com",
+    "ice3.somafm.com",
+    "ice4.somafm.com",
+    "ice5.somafm.com",
+    "ice6.somafm.com"
+  ],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "global", "size": { "width": 360, "height": 420 } },
+    "extras": { "title": "Net Radio" }
+  }
+}

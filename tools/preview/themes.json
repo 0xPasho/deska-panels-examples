@@ -1,0 +1,38 @@
+{
+  "dark": {
+    "--deska-bg": "#15171a",
+    "--deska-surface": "#212225",
+    "--deska-surface-raised": "#2c2d31",
+    "--deska-text": "#d8dbdf",
+    "--deska-text-secondary": "#979a9d",
+    "--deska-text-tertiary": "#6c6e71",
+    "--deska-accent": "#ff7a5c",
+    "--deska-on-accent": "#14110f",
+    "--deska-border": "#2b2c2f",
+    "--deska-focus": "#ff7a5c",
+    "--deska-danger": "#e2604a",
+    "--deska-success": "#34c77b",
+    "--deska-font-ui": "Roboto, \"Segoe UI\", -apple-system, \"system-ui\", \"Helvetica Neue\", sans-serif",
+    "--deska-font-mono": "Hack, \"JetBrains Mono\", \"SF Mono\", Menlo, Consolas, monospace",
+    "--deska-radius": "8px",
+    "--deska-radius-small": "4px"
+  },
+  "light": {
+    "--deska-bg": "#e9e3d9",
+    "--deska-surface": "#dfd9ce",
+    "--deska-surface-raised": "#d4cec4",
+    "--deska-text": "#362e26",
+    "--deska-text-secondary": "#5a524a",
+    "--deska-text-tertiary": "#9a9389",
+    "--deska-accent": "#ff7a5c",
+    "--deska-on-accent": "#14110f",
+    "--deska-border": "#d6cfc5",
+    "--deska-focus": "#a7543e",
+    "--deska-danger": "#a32a1f",
+    "--deska-success": "#12663a",
+    "--deska-font-ui": "Roboto, \"Segoe UI\", -apple-system, \"system-ui\", \"Helvetica Neue\", sans-serif",
+    "--deska-font-mono": "Hack, \"JetBrains Mono\", \"SF Mono\", Menlo, Consolas, monospace",
+    "--deska-radius": "8px",
+    "--deska-radius-small": "4px"
+  }
+}

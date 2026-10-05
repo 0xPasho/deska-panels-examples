@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "id": "ship-countdown",
+  "name": "Ship Countdown",
+  "version": "1.0.0",
+  "description": "Count down to a launch, a demo or a deadline, with the soonest one ticking in Extras.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#e8814d",
+  "category": "productivity",
+  "permissions": ["notify"],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 360, "height": 340 } },
+    "extras": { "title": "Ship Countdown", "view": "extras.html" }
+  }
+}

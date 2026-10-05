@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prompt Shelf</title>
+    <link rel="stylesheet" href="app.css" />
+    <script src="/__deska/sdk.js"></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main id="app" aria-busy="true">
+      <header class="bar">
+        <label class="search">
+          <svg class="search-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5" /><path d="m10.5 10.5 3 3" /></svg>
+          <input id="search" type="search" placeholder="Search prompts" aria-label="Search prompts" autocomplete="off" spellcheck="false" />
+          <kbd class="kbd" aria-hidden="true">/</kbd>
+        </label>
+        <button id="new" class="quiet" type="button">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3.5v9M3.5 8h9" /></svg>
+          New
+        </button>
+      </header>
+
+      <section id="loading" class="message">
+        <p>Loading prompts</p>
+      </section>
+
+      <section id="failed" class="message" hidden>
+        <p class="message-title">Your prompts did not load</p>
+        <p id="failed-detail" class="message-detail"></p>
+        <button id="retry" class="quiet" type="button">Try again</button>
+      </section>
+
+      <section id="shelf" hidden>
+        <ul id="list" class="list" aria-label="Prompts"></ul>
+        <div id="empty" class="message" hidden>
+          <p class="message-title" id="empty-title"></p>
+          <p class="message-detail" id="empty-detail"></p>
+          <button id="empty-action" class="quiet" type="button"></button>
+        </div>
+      </section>
+
+      <form id="editor" class="editor" hidden novalidate>
+        <h2 id="editor-title" class="editor-heading">New prompt</h2>
+        <label class="field">
+          <span class="field-label">Name</span>
+          <input id="editor-name" type="text" maxlength="80" autocomplete="off" required />
+        </label>
+        <label class="field field-grow">
+          <span class="field-label">Prompt</span>
+          <textarea id="editor-text" spellcheck="true" required></textarea>
+        </label>
+        <p class="hint">Write <code>{{name}}</code> for a blank you fill in when copying.</p>
+        <p id="editor-error" class="error" role="alert" hidden></p>
+        <div class="actions">
+          <div id="delete-zone" class="delete-zone">
+            <button id="delete" class="quiet danger" type="button">Delete</button>
+          </div>
+          <button id="cancel" class="quiet" type="button">Cancel</button>
+          <button id="save" class="primary" type="submit">Save</button>
+        </div>
+      </form>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+  </body>
+</html>

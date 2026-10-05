@@ -1,0 +1,77 @@
+{
+  "source": "Wikimedia Commons, picked by hand. Each entry keeps the credit its license asks for.",
+  "videos": [
+    {
+      "title": "Waves on a black sand beach",
+      "author": "Alexander Grebenkov",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Ocean_waves_at_L%C3%A6kjavik_beach,_Iceland.webm",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/transcoded/9/9b/Ocean_waves_at_L%C3%A6kjavik_beach%2C_Iceland.webm/Ocean_waves_at_L%C3%A6kjavik_beach%2C_Iceland.webm.480p.vp9.webm",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ocean_waves_at_L%C3%A6kjavik_beach%2C_Iceland.webm/960px--Ocean_waves_at_L%C3%A6kjavik_beach%2C_Iceland.webm.jpg"
+    },
+    {
+      "title": "An autumn stream",
+      "author": "Forest Wander",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Autumn_stream_in_West_Virginia.webm",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/transcoded/5/5f/Autumn_stream_in_West_Virginia.webm/Autumn_stream_in_West_Virginia.webm.480p.vp9.webm",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Autumn_stream_in_West_Virginia.webm/960px--Autumn_stream_in_West_Virginia.webm.jpg"
+    },
+    {
+      "title": "Rain on a quiet street",
+      "author": "Missvain",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:Rain_in_Sonoma_-_December_2025_-_Sarah_Stierch.webm",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/transcoded/d/dd/Rain_in_Sonoma_-_December_2025_-_Sarah_Stierch.webm/Rain_in_Sonoma_-_December_2025_-_Sarah_Stierch.webm.480p.vp9.webm",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Rain_in_Sonoma_-_December_2025_-_Sarah_Stierch.webm/960px--Rain_in_Sonoma_-_December_2025_-_Sarah_Stierch.webm.jpg"
+    },
+    {
+      "title": "Clouds over a canyon",
+      "author": "Extemporalist",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "page": "https://commons.wikimedia.org/wiki/File:Timelapse_of_Clouds_over_Bellevue_Canyon.webm",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/transcoded/d/d5/Timelapse_of_Clouds_over_Bellevue_Canyon.webm/Timelapse_of_Clouds_over_Bellevue_Canyon.webm.480p.vp9.webm",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Timelapse_of_Clouds_over_Bellevue_Canyon.webm/960px--Timelapse_of_Clouds_over_Bellevue_Canyon.webm.jpg"
+    },
+    {
+      "title": "A fireplace",
+      "author": "Fastily",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Fireplace_1_2021-02-14.webm",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/transcoded/0/04/Fireplace_1_2021-02-14.webm/Fireplace_1_2021-02-14.webm.480p.vp9.webm",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Fireplace_1_2021-02-14.webm/960px--Fireplace_1_2021-02-14.webm.jpg"
+    },
+    {
+      "title": "Fish in an aquarium",
+      "author": "Fastily",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Fish_at_Monterey_Bay_Aquarium_1_2024-01-11.webm",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/transcoded/f/ff/Fish_at_Monterey_Bay_Aquarium_1_2024-01-11.webm/Fish_at_Monterey_Bay_Aquarium_1_2024-01-11.webm.480p.vp9.webm",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Fish_at_Monterey_Bay_Aquarium_1_2024-01-11.webm/960px--Fish_at_Monterey_Bay_Aquarium_1_2024-01-11.webm.jpg"
+    },
+    {
+      "title": "Snow in the pines",
+      "author": "W.carter",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Snow_falling_in_Tuntorp.webm",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/transcoded/f/f3/Snow_falling_in_Tuntorp.webm/Snow_falling_in_Tuntorp.webm.480p.vp9.webm",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Snow_falling_in_Tuntorp.webm/960px--Snow_falling_in_Tuntorp.webm.jpg"
+    },
+    {
+      "title": "A cascading spring",
+      "author": "An Errant Knight",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "page": "https://commons.wikimedia.org/wiki/File:Cascading_stream_at_Cascade_Springs,_May_17.webm",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/transcoded/4/47/Cascading_stream_at_Cascade_Springs%2C_May_17.webm/Cascading_stream_at_Cascade_Springs%2C_May_17.webm.480p.vp9.webm",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Cascading_stream_at_Cascade_Springs%2C_May_17.webm/960px--Cascading_stream_at_Cascade_Springs%2C_May_17.webm.jpg"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ship Countdown</title>
+    <link rel="stylesheet" href="app.css" />
+    <script src="/__deska/sdk.js"></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main class="panel">
+      <p class="status" id="status" role="status">Loading countdowns</p>
+
+      <div class="status error" id="error" hidden>
+        <p id="error-text">Countdowns could not be read.</p>
+        <button type="button" class="quiet" id="retry">Try again</button>
+      </div>
+
+      <ol class="list" id="list" aria-label="Countdowns" hidden></ol>
+
+      <p class="empty" id="empty" hidden>No countdowns yet. Add a launch, a demo or a deadline.</p>
+
+      <footer class="footer" id="footer" hidden>
+        <button type="button" class="quiet add-toggle" id="add-toggle" aria-expanded="false" aria-controls="form">
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M8 3.5v9M3.5 8h9" /></svg>
+          New countdown
+        </button>
+
+        <form class="form" id="form" hidden novalidate>
+          <label class="field">
+            <span>Name</span>
+            <input id="name" name="name" type="text" maxlength="48" autocomplete="off" placeholder="Public launch" required />
+          </label>
+          <div class="when">
+            <label class="field">
+              <span>Date</span>
+              <input id="date" name="date" type="date" required />
+            </label>
+            <label class="field">
+              <span>Time</span>
+              <input id="time" name="time" type="time" required />
+            </label>
+          </div>
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+          <div class="actions">
+            <button type="button" class="quiet" id="cancel">Cancel</button>
+            <button type="submit" class="primary">Add countdown</button>
+          </div>
+        </form>
+      </footer>
+    </main>
+  </body>
+</html>

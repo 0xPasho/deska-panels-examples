@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SDK Playground</title>
+  <link rel="stylesheet" href="app.css">
+  <!-- The SDK first, as a classic script, so window.deska exists before app.js runs. -->
+  <script src="/__deska/sdk.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <template id="out-template">
+    <div class="out" aria-live="polite">
+      <code class="line"></code>
+      <p class="status" hidden></p>
+      <pre class="value" hidden></pre>
+      <p class="meaning" hidden></p>
+    </div>
+  </template>
+
+  <main id="app" aria-busy="true">
+    <p class="intro">Every call the panel bridge offers. Each one shows the line it ran and what came back.</p>
+    <p class="waiting" id="waiting" role="status">Waiting for Deska</p>
+
+    <div class="sections" id="sections" hidden>
+      <details data-section="init">
+        <summary><span class="name">Init</span><code class="api">deska.ready()</code></summary>
+        <div class="body">
+          <dl class="live" aria-label="Live values">
+            <div><dt><code>deska.place</code></dt><dd id="live-place"></dd></div>
+            <div><dt><code>deska.visible</code></dt><dd id="live-visible"></dd></div>
+            <div><dt><code>deska.idle</code></dt><dd id="live-idle"></dd></div>
+            <div><dt><code>deska.theme.mode</code></dt><dd id="live-mode"></dd></div>
+          </dl>
+          <div data-out="init"></div>
+        </div>
+      </details>
+
+      <details data-section="storage">
+        <summary><span class="name">Storage</span><code class="api">deska.storage</code></summary>
+        <form class="body" id="storage-form">
+          <label class="field">
+            <span>Key</span>
+            <input id="storage-key" value="greeting" autocomplete="off" spellcheck="false" required>
+          </label>
+          <label class="field">
+            <span>Value <span class="hint">(JSON, or plain text)</span></span>
+            <textarea id="storage-value" rows="2" spellcheck="false">"hi"</textarea>
+          </label>
+          <div class="actions">
+            <button type="button" data-storage="get">Get</button>
+            <button type="button" data-storage="set">Set</button>
+            <button type="button" data-storage="remove">Remove</button>
+            <button type="button" data-storage="keys">Keys</button>
+          </div>
+          <div data-out="storage"></div>
+        </form>
+      </details>
+
+      <details data-section="title">
+        <summary><span class="name">Title</span><code class="api">deska.setTitle()</code></summary>
+        <form class="body" id="title-form">
+          <label class="field">
+            <span>Title <span class="hint">(empty clears it)</span></span>
+            <input id="title-text" value="Focus 12:31" maxlength="60" autocomplete="off">
+          </label>
+          <div class="actions"><button type="submit">Set title</button></div>
+          <div data-out="title"></div>
+        </form>
+      </details>
+
+      <details data-section="notify">
+        <summary><span class="name">Notify</span><code class="api">deska.notify()</code></summary>
+        <form class="body" id="notify-form">
+          <label class="field">
+            <span>Title</span>
+            <input id="notify-title" value="Build finished" autocomplete="off" required>
+          </label>
+          <label class="field">
+            <span>Body <span class="hint">(optional)</span></span>
+            <input id="notify-body" value="All 42 tests passed." autocomplete="off">
+          </label>
+          <div class="actions"><button type="submit">Send notice</button></div>
+          <div data-out="notify"></div>
+        </form>
+      </details>
+
+      <details data-section="open-url">
+        <summary><span class="name">Open URL</span><code class="api">deska.openUrl()</code></summary>
+        <form class="body" id="open-form">
+          <label class="field">
+            <span>URL <span class="hint">(https only)</span></span>
+            <input id="open-url" type="text" inputmode="url" value="https://deska.dev" autocomplete="off" spellcheck="false" required>
+          </label>
+          <div class="actions"><button type="submit">Open</button></div>
+          <div data-out="open-url"></div>
+        </form>
+      </details>
+
+      <details data-section="clipboard">
+        <summary><span class="name">Clipboard</span><code class="api">deska.clipboard.write()</code></summary>
+        <form class="body" id="clipboard-form">
+          <label class="field">
+            <span>Text</span>
+            <input id="clipboard-text" value="Copied from a panel" autocomplete="off">
+          </label>
+          <div class="actions"><button type="submit">Write to clipboard</button></div>
+          <div data-out="clipboard"></div>
+        </form>
+      </details>
+
+      <details data-section="extras">
+        <summary><span class="name">Extras</span><code class="api">deska.extras.set()</code></summary>
+        <form class="body" id="extras-form">
+          <label class="field">
+            <span>State <span class="hint">(up to 60 characters)</span></span>
+            <input id="extras-state" value="Focus" maxlength="60" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>Progress <output id="extras-progress-out" for="extras-progress">40%</output></span>
+            <input id="extras-progress" type="range" min="0" max="100" step="5" value="40">
+          </label>
+          <div class="row">
+            <label class="field">
+              <span>Until, in minutes</span>
+              <input id="extras-until" type="number" min="1" max="1440" step="1" value="25" inputmode="numeric" placeholder="None">
+            </label>
+            <label class="field">
+              <span>Control</span>
+              <select id="extras-control">
+                <option value="">None</option>
+                <option value="play">Play</option>
+                <option value="pause" selected>Pause</option>
+                <option value="start">Start</option>
+                <option value="stop">Stop</option>
+              </select>
+            </label>
+          </div>
+          <div class="actions">
+            <button type="submit" class="primary">Apply</button>
+            <button type="button" id="extras-clear">Clear</button>
+          </div>
+          <div data-out="extras"></div>
+        </form>
+      </details>
+
+      <details data-section="events">
+        <summary><span class="name">Events</span><code class="api">deska.on()</code></summary>
+        <div class="body">
+          <code class="line static">deska.on('theme' | 'visibility' | 'extras.control', fn)</code>
+          <p class="empty" id="events-empty">Nothing yet. Switch the theme, hide the panel or press the Extras control.</p>
+          <ol class="events" id="events" aria-label="Events, newest first" aria-live="polite" hidden></ol>
+          <div class="actions" id="events-actions" hidden><button type="button" id="events-clear">Clear log</button></div>
+        </div>
+      </details>
+
+      <details data-section="errors">
+        <summary><span class="name">Error codes</span><code class="api">err.code</code></summary>
+        <div class="body">
+          <code class="line static">try { await deska.notify(n) } catch (err) { err.code }</code>
+          <dl class="codes" id="codes"></dl>
+          <p class="label">Trigger one</p>
+          <div class="actions">
+            <button type="button" id="trigger-invalid">invalid_args</button>
+            <button type="button" id="trigger-large">too_large</button>
+          </div>
+          <div data-out="errors"></div>
+        </div>
+      </details>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Net Radio</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="/__deska/sdk.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main class="app" id="app" aria-busy="true">
+    <section class="player" aria-label="Player">
+      <img class="cover" id="cover" alt="" width="56" height="56" hidden>
+      <div class="cover cover-empty" id="cover-empty" aria-hidden="true"></div>
+      <div class="now">
+        <p class="station" id="station">Loading stations</p>
+        <p class="track" id="track" aria-live="polite"></p>
+        <p class="status" id="status" role="status"></p>
+      </div>
+      <button type="button" class="play" id="play" aria-label="Play" disabled>
+        <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+        <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5.5" width="4" height="13" rx="1"/><rect x="13.5" y="5.5" width="4" height="13" rx="1"/></svg>
+      </button>
+    </section>
+
+    <div class="controls">
+      <label class="volume">
+        <span class="visually-hidden">Volume</span>
+        <svg class="icon-line" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/></svg>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8">
+      </label>
+      <button type="button" class="quiet" id="retry" hidden>Try again</button>
+      <button type="button" class="link" id="page" hidden>Station page</button>
+    </div>
+
+    <form class="search" id="search-form" role="search">
+      <label class="visually-hidden" for="search">Find a station</label>
+      <input type="search" id="search" placeholder="Find a station or genre" autocomplete="off" spellcheck="false">
+    </form>
+
+    <p class="notice" id="notice" role="status" hidden></p>
+
+    <div class="lists" id="lists">
+      <section id="favorites-section" hidden>
+        <h2 class="heading">Favorites</h2>
+        <ul class="list" id="favorites"></ul>
+      </section>
+      <section id="all-section">
+        <h2 class="heading" id="all-heading">All stations</h2>
+        <ul class="list" id="stations"></ul>
+      </section>
+      <div class="empty" id="empty" hidden></div>
+    </div>
+
+    <footer class="credit">
+      <span>Streams by SomaFM.</span>
+      <button type="button" class="link" id="support">Support SomaFM</button>
+    </footer>
+  </main>
+
+  <template id="row">
+    <li class="row">
+      <button type="button" class="pick">
+        <img class="thumb" alt="" width="36" height="36" loading="lazy">
+        <span class="row-text">
+          <span class="row-title"></span>
+          <span class="row-meta"></span>
+          <span class="row-desc"></span>
+        </span>
+      </button>
+      <button type="button" class="star" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 4.5 2.3 4.8 5.2.7-3.8 3.6.9 5.2-4.6-2.5-4.6 2.5.9-5.2L4.5 10l5.2-.7z"/></svg>
+      </button>
+    </li>
+  </template>
+</body>
+</html>

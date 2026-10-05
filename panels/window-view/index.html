@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Window View</title>
+  <link rel="stylesheet" href="app.css">
+  <!-- The SDK first, as a classic script, so window.deska exists before app.js runs. -->
+  <script src="/__deska/sdk.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main id="app" data-state="loading" aria-busy="true">
+    <!-- Muted, so Chromium lets it play without a click. No controls: the panel draws its own. -->
+    <video id="video" muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video>
+
+    <section class="message" id="message">
+      <p class="message-text" id="message-text">Loading</p>
+      <button type="button" class="text-button" id="retry" hidden>Try again</button>
+    </section>
+
+    <div class="overlay" id="overlay" hidden>
+      <div class="caption">
+        <p class="title" id="title"></p>
+        <p class="credit" id="credit"></p>
+        <p class="note" id="note" role="status" aria-live="polite"></p>
+      </div>
+      <div class="controls" role="group" aria-label="Scene">
+        <button type="button" class="icon-button" id="prev" aria-label="Previous scene" title="Previous scene">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4.5 7 10l5.5 5.5"/></svg>
+        </button>
+        <button type="button" class="icon-button" id="toggle" aria-label="Pause" title="Pause">
+          <svg class="icon-pause" viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 5v10M12.5 5v10"/></svg>
+          <svg class="icon-play" viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5.2v9.6a.6.6 0 0 0 .9.5l7.4-4.8a.6.6 0 0 0 0-1L7.9 4.7a.6.6 0 0 0-.9.5Z"/></svg>
+        </button>
+        <button type="button" class="icon-button" id="next" aria-label="Next scene" title="Next scene">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7.5 4.5 13 10l-5.5 5.5"/></svg>
+        </button>
+        <button type="button" class="text-button" id="open-credit">Credit</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

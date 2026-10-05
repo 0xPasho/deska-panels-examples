@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "id": "on-this-day",
+  "name": "On This Day",
+  "version": "1.0.0",
+  "description": "Today's events in history, the featured article and the picture of the day from Wikipedia, in your language.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#3366cc",
+  "category": "other",
+  "permissions": ["open-url"],
+  "network": [
+    "en.wikipedia.org",
+    "es.wikipedia.org",
+    "fr.wikipedia.org",
+    "de.wikipedia.org",
+    "pt.wikipedia.org",
+    "it.wikipedia.org",
+    "upload.wikimedia.org",
+    "thumb.wikimedia.org"
+  ],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 380, "height": 480 } }
+  }
+}

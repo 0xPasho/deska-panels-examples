@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "my-first-panel",
+  "name": "My First Panel",
+  "version": "0.1.0",
+  "description": "A small clock that remembers one time zone. The starting point of the Build your first panel tutorial.",
+  "author": "Your name",
+  "icon": "icon.svg",
+  "color": "#4f8fe6",
+  "category": "other",
+  "permissions": [],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 300, "height": 200 } }
+  }
+}

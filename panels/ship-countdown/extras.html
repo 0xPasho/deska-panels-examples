@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ship Countdown</title>
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="extras.css" />
+    <script src="/__deska/sdk.js"></script>
+    <script type="module" src="extras.js"></script>
+  </head>
+  <body>
+    <main class="compact">
+      <p class="status" id="status" role="status">Loading countdowns</p>
+
+      <div class="status error" id="error" hidden>
+        <p id="error-text">Countdowns could not be read.</p>
+        <button type="button" class="quiet" id="retry">Try again</button>
+      </div>
+
+      <div class="empty" id="empty" hidden>
+        <p class="name">Nothing scheduled</p>
+        <p>Add a launch, a demo or a deadline in the Ship Countdown panel.</p>
+      </div>
+
+      <section class="hero" id="hero" hidden>
+        <svg class="ring" viewBox="0 0 64 64" aria-hidden="true">
+          <circle class="track" cx="32" cy="32" r="28" />
+          <circle class="arc" id="arc" cx="32" cy="32" r="28" pathLength="100" />
+        </svg>
+        <div class="hero-text">
+          <p class="name" id="hero-name"></p>
+          <p class="meta" id="hero-meta"></p>
+          <p class="clock" id="hero-clock"></p>
+          <p class="note" id="hero-note"></p>
+          <button type="button" class="quiet dismiss" id="dismiss" hidden>Dismiss</button>
+        </div>
+      </section>
+
+      <ol class="later" id="later" aria-label="Also counting down" hidden></ol>
+    </main>
+  </body>
+</html>

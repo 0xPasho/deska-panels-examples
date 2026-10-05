@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "id": "sdk-playground",
+  "name": "SDK Playground",
+  "version": "1.0.0",
+  "description": "Try every call the panel bridge offers, see the line of code it ran, and learn what each error code means.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#8a6be6",
+  "category": "dev",
+  "permissions": ["notify", "open-url", "clipboard-write"],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 420, "height": 520 } },
+    "extras": { "title": "SDK Playground", "view": "extras.html" }
+  }
+}

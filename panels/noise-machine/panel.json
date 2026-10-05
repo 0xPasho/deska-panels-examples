@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "id": "noise-machine",
+  "name": "Noise Machine",
+  "version": "1.0.0",
+  "description": "White, pink and brown noise, rain and a fan, generated live with no audio files. Mix them, set a sleep timer, play from Extras.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#6f8fb8",
+  "category": "ambient",
+  "permissions": [],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "global", "size": { "width": 340, "height": 360 } },
+    "extras": { "title": "Noise Machine" }
+  }
+}

@@ -1,0 +1,344 @@
+/* Shared by index.html and extras.html. Every color comes from Deska's tokens. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px/1.4 var(--deska-font-ui, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+  overflow-x: hidden;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--deska-focus);
+  outline-offset: 1px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 14px 14px 10px;
+  gap: 4px;
+}
+
+/* ---- States ---------------------------------------------------------------- */
+
+.status,
+.empty {
+  margin: 0;
+  padding: 24px 2px;
+  color: var(--deska-text-secondary);
+  text-wrap: pretty;
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.error p {
+  margin: 0;
+  color: var(--deska-text);
+}
+
+/* ---- Buttons --------------------------------------------------------------- */
+
+.quiet,
+.primary,
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 28px;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  cursor: pointer;
+  transition-property: background-color, color, scale;
+  transition-duration: 120ms;
+  transition-timing-function: ease-out;
+}
+
+.quiet {
+  padding: 0 8px;
+  background: transparent;
+  color: var(--deska-text-secondary);
+}
+
+.quiet:hover {
+  background: var(--deska-surface);
+  color: var(--deska-text);
+}
+
+.primary {
+  padding: 0 12px;
+  background: var(--deska-accent);
+  color: var(--deska-on-accent);
+  font-weight: 600;
+}
+
+.primary:hover {
+  background: color-mix(in srgb, var(--deska-accent) 88%, var(--deska-text));
+}
+
+.icon {
+  flex: none;
+  width: 28px;
+  padding: 0;
+  background: transparent;
+  color: var(--deska-text-tertiary);
+}
+
+.icon:hover {
+  background: var(--deska-surface);
+  color: var(--deska-text);
+}
+
+.quiet:active,
+.primary:active,
+.icon:active {
+  scale: 0.96;
+}
+
+svg path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+/* ---- Countdown rows ---------------------------------------------------------- */
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  padding: 10px 0 12px;
+  border-top: 1px solid var(--deska-border);
+}
+
+.row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.row-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  padding-top: 4px;
+}
+
+.name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.meta {
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+}
+
+.icon {
+  margin: 0 -6px 0 0;
+}
+
+.clock {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 6px 0 8px;
+  color: var(--deska-text);
+}
+
+.unit {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+}
+
+.unit b {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.unit small {
+  font-size: 12px;
+  color: var(--deska-text-secondary);
+}
+
+.lead .name {
+  font-size: 14px;
+}
+
+.lead .clock {
+  gap: 16px;
+  margin: 10px 0 12px;
+}
+
+.lead .unit b {
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.lead .unit small {
+  font-size: 13px;
+}
+
+.bar {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--deska-surface-raised);
+  overflow: hidden;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: color-mix(in srgb, var(--deska-text) 70%, transparent);
+  transform-origin: left center;
+  transition: transform 400ms ease-out;
+}
+
+.note {
+  margin: 6px 0 0;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+}
+
+.note:empty {
+  display: none;
+}
+
+.done .clock {
+  font-size: 15px;
+  color: var(--deska-success);
+  font-weight: 500;
+}
+
+.done .bar i {
+  background: var(--deska-success);
+}
+
+/* ---- Footer and form ---------------------------------------------------------- */
+
+.footer {
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.add-toggle {
+  margin-left: -8px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--deska-border);
+}
+
+.when {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 8px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.field span {
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+}
+
+.field input {
+  width: 100%;
+  min-height: 30px;
+  padding: 4px 8px;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-surface);
+  transition: border-color 120ms ease-out;
+}
+
+.field input::placeholder {
+  color: var(--deska-text-tertiary);
+}
+
+.field input:hover {
+  border-color: color-mix(in srgb, var(--deska-text) 25%, var(--deska-border));
+}
+
+.field input:focus-visible {
+  outline-offset: -1px;
+}
+
+/* The native picker icon follows color-scheme, which the SDK sets per theme. */
+.field input::-webkit-calendar-picker-indicator {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.form-error {
+  margin: 0;
+  color: var(--deska-danger);
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}

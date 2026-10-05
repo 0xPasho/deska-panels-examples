@@ -1,0 +1,322 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px/1.4 var(--deska-font-ui);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 6px 6px 8px;
+}
+
+/* Header: when it was checked, and the two quiet actions. */
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 4px 10px;
+}
+
+.checked {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  color: var(--deska-text-tertiary);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.actions {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+.action,
+.done {
+  min-height: 28px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  background: transparent;
+  color: var(--deska-text-secondary);
+  cursor: pointer;
+  transition-property: background-color, color, scale;
+  transition-duration: 120ms;
+  transition-timing-function: ease-out;
+}
+
+.action:hover,
+.done:hover {
+  background: var(--deska-surface);
+  color: var(--deska-text);
+}
+
+.action:active,
+.done:active {
+  scale: 0.96;
+}
+
+.action[aria-disabled='true'] {
+  color: var(--deska-text-tertiary);
+  background: transparent;
+  cursor: default;
+  scale: 1;
+}
+
+.action[aria-expanded='true'] {
+  color: var(--deska-text);
+  background: var(--deska-surface);
+}
+
+:focus-visible {
+  outline: 2px solid var(--deska-focus);
+  outline-offset: -2px;
+}
+
+/* The list: one flat row per service, the whole row opens its status page. */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: 10px;
+  row-gap: 1px;
+  width: 100%;
+  min-height: 32px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  background: transparent;
+  text-align: start;
+  cursor: pointer;
+  transition: background-color 120ms ease-out;
+}
+
+.row:hover {
+  background: var(--deska-surface);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  grid-row: 1;
+  align-self: center;
+  background: var(--deska-text-tertiary);
+}
+
+.row[data-tone='ok'] .dot {
+  background: var(--deska-success);
+}
+
+/* Degraded is a ring, a full outage is filled: the word beside it always
+   says the same thing, so color is never the only cue. */
+.row[data-tone='degraded'] .dot {
+  background: transparent;
+  box-shadow: inset 0 0 0 2px var(--deska-danger);
+}
+
+.row[data-tone='down'] .dot {
+  background: var(--deska-danger);
+}
+
+.row[data-tone='unknown'] .dot,
+.row[data-tone='pending'] .dot {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--deska-text-tertiary);
+}
+
+/* The incident lines run under the status word too, so they get the row's
+   full width instead of a narrow column. */
+.main {
+  display: contents;
+}
+
+.name {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.detail,
+.since {
+  grid-column: 2 / 4;
+}
+
+.detail {
+  color: var(--deska-text-secondary);
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.since {
+  color: var(--deska-text-tertiary);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.status {
+  grid-column: 3;
+  grid-row: 1;
+  color: var(--deska-text-secondary);
+  white-space: nowrap;
+}
+
+.row[data-tone='degraded'] .status,
+.row[data-tone='down'] .status {
+  grid-column: 3;
+  grid-row: 1;
+  color: var(--deska-danger);
+}
+
+.row[data-tone='unknown'] .status,
+.row[data-tone='pending'] .status {
+  grid-column: 3;
+  grid-row: 1;
+  color: var(--deska-text-tertiary);
+}
+
+/* Choosing services. */
+.picker {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 0 4px;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 4px 10px 6px;
+  color: var(--deska-text-secondary);
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  padding: 4px 10px;
+  border-radius: var(--deska-radius-small);
+  cursor: pointer;
+}
+
+.choice:hover {
+  background: var(--deska-surface);
+}
+
+.choice input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: var(--deska-accent);
+  flex-shrink: 0;
+}
+
+.choice .host {
+  margin-inline-start: auto;
+  min-width: 0;
+  color: var(--deska-text-tertiary);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.done {
+  align-self: flex-end;
+  margin-inline-end: 2px;
+  color: var(--deska-text);
+}
+
+.empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 24px 16px;
+  text-align: center;
+  color: var(--deska-text-secondary);
+}
+
+.empty p {
+  margin: 0;
+  max-width: 28ch;
+}
+
+.note {
+  margin: auto 0 0;
+  padding: 6px 10px 0;
+  min-height: 1.4em;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+}
+
+.note:empty {
+  padding: 0;
+  min-height: 0;
+}
+
+/* Inside the Extras popover the list stays compact: no service picker. */
+.in-extras #edit {
+  display: none;
+}
+
+
+@media (max-width: 300px) {
+  .choice .host {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

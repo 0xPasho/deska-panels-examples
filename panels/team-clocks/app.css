@@ -1,0 +1,247 @@
+/* Every color, font and radius comes from Deska's theme tokens, which the SDK
+   writes on <html>, so the panel matches the app in dark and light. */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px/1.4 var(--deska-font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.status {
+  margin: 0;
+  padding: 20px 16px;
+  color: var(--deska-text-secondary);
+  text-wrap: pretty;
+}
+
+/* The list */
+
+.clocks {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  overflow: hidden auto;
+}
+
+.clock {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 28px;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 8px 8px 16px;
+}
+
+.clock + .clock {
+  border-top: 1px solid var(--deska-border);
+}
+
+.where,
+.when {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.when {
+  align-items: flex-end;
+  text-align: end;
+}
+
+.name {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.time {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.meta {
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.remove {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  background: transparent;
+  color: var(--deska-text-tertiary);
+  cursor: pointer;
+  transition-property: color, background-color;
+  transition-duration: 120ms;
+}
+
+.remove svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.remove:hover {
+  background: var(--deska-surface);
+  color: var(--deska-text);
+}
+
+/* Footer and buttons */
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 8px;
+  border-top: 1px solid var(--deska-border);
+}
+
+.notice {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  color: var(--deska-danger);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+button {
+  font: inherit;
+}
+
+.text-button {
+  min-height: 28px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  background: transparent;
+  color: var(--deska-text-secondary);
+  cursor: pointer;
+  transition-property: color, background-color;
+  transition-duration: 120ms;
+}
+
+.text-button:hover {
+  background: var(--deska-surface);
+  color: var(--deska-text);
+}
+
+.primary {
+  min-height: 28px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-accent);
+  color: var(--deska-on-accent);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+button:active {
+  scale: 0.96;
+}
+
+:focus-visible {
+  outline: 2px solid var(--deska-focus);
+  outline-offset: 1px;
+}
+
+/* The add form */
+
+.add {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--deska-border);
+  background: var(--deska-surface);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+}
+
+.optional {
+  color: var(--deska-text-tertiary);
+}
+
+input {
+  width: 100%;
+  min-height: 30px;
+  padding: 0 8px;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px var(--deska-font-ui);
+}
+
+input::placeholder {
+  color: var(--deska-text-tertiary);
+}
+
+input:focus-visible {
+  outline-offset: -1px;
+}
+
+.form-error {
+  margin: 0;
+  color: var(--deska-danger);
+  font-size: 12px;
+}
+
+.form-error:empty {
+  display: none;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+
+  button:active {
+    scale: none;
+  }
+}

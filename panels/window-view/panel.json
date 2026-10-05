@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "window-view",
+  "name": "Window View",
+  "version": "1.0.0",
+  "description": "A calm window on your desk: short looping nature scenes from Wikimedia Commons, muted and credited.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#3f8f86",
+  "category": "ambient",
+  "permissions": ["open-url"],
+  "network": ["upload.wikimedia.org"],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 420, "height": 280 } }
+  }
+}

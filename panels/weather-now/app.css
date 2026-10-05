@@ -1,0 +1,491 @@
+/* Colors, fonts and radii come only from Deska's theme tokens, which the SDK
+ * writes on <html>, so the panel matches the app in dark and light. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px/1.4 var(--deska-font-ui);
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.secondary {
+  color: var(--deska-text-secondary);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#app {
+  container-type: inline-size;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 12px 6px;
+  min-width: 0;
+}
+
+/* --- buttons ------------------------------------------------------------ */
+
+.quiet,
+.link,
+.icon-button,
+.saved-pick {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition-property: background-color, color, scale;
+  transition-duration: 120ms;
+  transition-timing-function: ease-out;
+}
+
+.quiet {
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: var(--deska-radius-small);
+  color: var(--deska-text-secondary);
+}
+
+.quiet:hover,
+.icon-button:hover {
+  background: color-mix(in srgb, var(--deska-text) 8%, transparent);
+  color: var(--deska-text);
+}
+
+.quiet:active,
+.icon-button:active {
+  scale: 0.96;
+}
+
+.link {
+  min-height: 28px;
+  padding: 0;
+  color: var(--deska-text-secondary);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  text-underline-offset: 2px;
+}
+
+.link:hover {
+  color: var(--deska-text);
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: var(--deska-radius-small);
+  color: var(--deska-text-tertiary);
+}
+
+.icon-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--deska-focus);
+  outline-offset: 1px;
+}
+
+/* --- header --------------------------------------------------------------- */
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 32px;
+}
+
+.bar h1 {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.place {
+  flex: 1;
+  min-width: 0;
+}
+
+.place h1,
+.place p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.place p {
+  font-size: 12px;
+}
+
+#places-title {
+  flex: 1;
+}
+
+.units {
+  display: flex;
+  flex: none;
+}
+
+.units .quiet {
+  padding: 0 7px;
+}
+
+.units .quiet[aria-pressed='true'] {
+  color: var(--deska-text);
+  background: color-mix(in srgb, var(--deska-text) 8%, transparent);
+}
+
+/* --- current ---------------------------------------------------------------- */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.current {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 12px;
+  row-gap: 6px;
+}
+
+.icon {
+  display: inline-grid;
+  place-items: center;
+  color: var(--deska-text-secondary);
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.knock {
+  fill: var(--deska-bg);
+}
+
+.current-icon {
+  color: var(--deska-text);
+}
+
+.current-icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.current-temp {
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.current-detail {
+  min-width: 0;
+  flex: 1 1 120px;
+  line-height: 1.35;
+}
+
+.current-words {
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+/* --- hours and days ------------------------------------------------------------- */
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.caption {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--deska-text-secondary);
+}
+
+.hours {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  padding: 6px 0;
+  border-block: 1px solid var(--deska-border);
+}
+
+/* Narrow: every other hour, so twelve hours still fit in six columns. */
+.hour:nth-child(even) {
+  display: none;
+}
+
+@container (min-width: 520px) {
+  .hours {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .hour:nth-child(even) {
+    display: flex;
+  }
+}
+
+.hour {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.hour-time {
+  font-size: 12px;
+  color: var(--deska-text-secondary);
+  white-space: nowrap;
+}
+
+.days {
+  display: flex;
+  flex-direction: column;
+}
+
+.day {
+  display: grid;
+  grid-template-columns: minmax(44px, 7em) 24px 36px minmax(40px, 1fr) 36px;
+  align-items: center;
+  column-gap: 8px;
+  min-height: 26px;
+}
+
+.day-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.day-low,
+.day-high {
+  text-align: end;
+}
+
+.range {
+  position: relative;
+  height: 4px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--deska-text) 10%, transparent);
+}
+
+.range-fill {
+  position: absolute;
+  inset-block: 0;
+  border-radius: 2px;
+  background: var(--deska-text-secondary);
+}
+
+/* --- states and footer ----------------------------------------------------------- */
+
+.message {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px 8px;
+  text-align: center;
+  text-wrap: pretty;
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 10px;
+  font-size: 12px;
+}
+
+#updated {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.attribution {
+  margin-inline-start: auto;
+}
+
+/* --- places ---------------------------------------------------------------------- */
+
+.search input {
+  width: 100%;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-surface);
+}
+
+.search input::placeholder {
+  color: var(--deska-text-tertiary);
+}
+
+.search input:focus-visible {
+  outline-offset: -1px;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  margin-top: -8px;
+  padding: 4px;
+  border-radius: var(--deska-radius);
+  background: var(--deska-surface);
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 36px;
+  padding: 4px 8px;
+  border-radius: var(--deska-radius-small);
+  cursor: pointer;
+}
+
+.result:hover,
+.result[aria-selected='true'] {
+  background: var(--deska-surface-raised);
+}
+
+.search-status:empty {
+  display: none;
+}
+
+.search-status {
+  margin-top: -6px;
+  overflow-wrap: anywhere;
+}
+
+.saved {
+  display: flex;
+  flex-direction: column;
+  margin-top: -8px;
+}
+
+.saved-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.saved-pick {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 4px 6px 4px 2px;
+  border-radius: var(--deska-radius-small);
+  text-align: start;
+}
+
+.saved-pick:hover {
+  background: color-mix(in srgb, var(--deska-text) 6%, transparent);
+}
+
+.saved-check {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 20px;
+  color: var(--deska-accent);
+}
+
+.saved-check svg {
+  width: 16px;
+  height: 16px;
+}
+
+.saved-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.saved-name,
+.saved-region {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.saved-region {
+  font-size: 12px;
+}
+
+.empty {
+  padding: 8px 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0ms !important;
+  }
+}

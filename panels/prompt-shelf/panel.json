@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "prompt-shelf",
+  "name": "Prompt Shelf",
+  "version": "1.0.0",
+  "description": "Reusable prompts for coding agents. Search, fill in the blanks and copy in one click.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#8a6cf0",
+  "category": "productivity",
+  "permissions": ["clipboard-write"],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 380, "height": 420 } }
+  }
+}

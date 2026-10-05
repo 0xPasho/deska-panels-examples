@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>On This Day</title>
+    <link rel="stylesheet" href="app.css" />
+    <script src="/__deska/sdk.js"></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <header class="bar">
+      <h1 class="date" id="date"></h1>
+      <label class="lang">
+        <span class="visually-hidden" id="lang-label"></span>
+        <select id="lang"></select>
+      </label>
+      <button class="icon-button" id="refresh" type="button">
+        <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M13.5 8a5.5 5.5 0 1 1-1.6-3.9M13.5 2.5v3h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </header>
+    <nav class="tabs" role="tablist" id="tabs">
+      <button class="tab" role="tab" type="button" id="tab-events" data-tab="events" aria-controls="view"></button>
+      <button class="tab" role="tab" type="button" id="tab-featured" data-tab="featured" aria-controls="view"></button>
+    </nav>
+    <main id="view" class="view" role="tabpanel" aria-busy="true"></main>
+    <footer class="credit">
+      <button class="link" type="button" id="credit-source"></button>
+      <button class="link" type="button" id="credit-license">CC BY-SA 4.0</button>
+    </footer>
+    <p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+  </body>
+</html>

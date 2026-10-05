@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noise Machine</title>
+  <link rel="stylesheet" href="app.css">
+  <!-- The SDK first, as a classic script, so window.deska exists before app.js runs. -->
+  <script src="/__deska/sdk.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main id="app" class="app" aria-busy="true">
+    <p class="loading" id="loading">Loading</p>
+
+    <div class="player" id="player" hidden>
+      <div class="transport">
+        <button type="button" class="play" id="play" aria-describedby="now">
+          <svg class="icon icon-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.8v10.4a.6.6 0 0 0 .9.5l8.3-5.2a.6.6 0 0 0 0-1L5.4 2.3a.6.6 0 0 0-.9.5Z"/></svg>
+          <svg class="icon icon-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx=".8"/><rect x="9.5" y="2.5" width="3" height="11" rx=".8"/></svg>
+          <span id="play-label">Play</span>
+        </button>
+        <div class="now" id="now" aria-live="polite">
+          <p class="now-title" id="now-title"></p>
+          <p class="now-sub" id="now-sub"></p>
+        </div>
+      </div>
+
+      <div class="meter" aria-hidden="true"><span class="meter-fill" id="meter-fill"></span></div>
+
+      <div class="notice" id="notice" role="status" hidden>
+        <span id="notice-text"></span>
+        <button type="button" class="text-button" id="notice-action" hidden></button>
+      </div>
+
+      <ul class="sounds" id="sounds" aria-label="Sounds"></ul>
+
+      <div class="row">
+        <label class="row-label" for="master">Volume</label>
+        <input type="range" class="slider" id="master" min="0" max="100" step="1">
+      </div>
+
+      <div class="row row-sleep" role="group" aria-labelledby="sleep-label">
+        <span class="row-label" id="sleep-label">Sleep</span>
+        <div class="seg" id="sleep">
+          <button type="button" data-minutes="0">Off</button>
+          <button type="button" data-minutes="15">15 min</button>
+          <button type="button" data-minutes="30">30 min</button>
+          <button type="button" data-minutes="60">60 min</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="failure" id="failure" hidden>
+      <p id="failure-text">Sound could not start here.</p>
+      <button type="button" class="quiet" id="retry">Try again</button>
+    </div>
+  </main>
+
+  <template id="sound-row">
+    <li class="sound">
+      <button type="button" class="toggle" aria-pressed="false">
+        <span class="box" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.6 6.3 5 8.6l4.4-5"/></svg></span>
+        <span class="name"></span>
+      </button>
+      <input type="range" class="slider" min="0" max="100" step="1">
+    </li>
+  </template>
+</body>
+</html>

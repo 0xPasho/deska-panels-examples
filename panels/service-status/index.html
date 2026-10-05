@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Service Status</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="/__deska/sdk.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main class="panel" aria-busy="true">
+    <header class="bar">
+      <p class="checked" id="checked" aria-live="polite">Checking</p>
+      <div class="actions">
+        <button type="button" class="action" id="edit" aria-expanded="false" aria-controls="picker">Services</button>
+        <button type="button" class="action" id="refresh">Refresh</button>
+      </div>
+    </header>
+
+    <ul class="list" id="list" aria-label="Services"></ul>
+
+    <form class="picker" id="picker" hidden>
+      <fieldset>
+        <legend>Watch these services</legend>
+        <div id="choices"></div>
+      </fieldset>
+      <button type="submit" class="done">Done</button>
+    </form>
+
+    <div class="empty" id="empty" hidden></div>
+
+    <p class="note" id="note" role="status" aria-live="polite"></p>
+  </main>
+</body>
+</html>

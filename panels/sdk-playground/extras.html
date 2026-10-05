@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SDK Playground</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="/__deska/sdk.js"></script>
+  <script type="module" src="extras.js"></script>
+</head>
+<body class="extras-view">
+  <main id="app" aria-busy="true">
+    <p class="waiting" id="waiting" role="status">Waiting for Deska</p>
+    <div id="content" hidden>
+      <p class="intro">This page is the Extras view, named by <code>contributes.extras.view</code> in panel.json.</p>
+      <dl class="live" aria-label="Live values">
+        <div><dt><code>deska.place</code></dt><dd id="live-place"></dd></div>
+        <div><dt><code>deska.visible</code></dt><dd id="live-visible"></dd></div>
+      </dl>
+      <p class="label">Row presses</p>
+      <code class="line static">deska.on('extras.control', fn)</code>
+      <p class="empty" id="events-empty">Nothing yet. Set a control from the panel, then press it on the row.</p>
+      <ol class="events" id="events" aria-label="Row presses, newest first" aria-live="polite" hidden></ol>
+      <div class="out" id="out" aria-live="polite" hidden>
+        <code class="line"></code>
+        <p class="status" hidden></p>
+        <pre class="value" hidden></pre>
+        <p class="meaning" hidden></p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

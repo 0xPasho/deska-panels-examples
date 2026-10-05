@@ -1,0 +1,47 @@
+/* Every color, font and radius comes from Deska's theme tokens, which the SDK
+   writes on <html>. The panel follows dark, light and every accent for free. */
+:root { color-scheme: dark light; }
+
+body {
+  margin: 0;
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px/1.45 var(--deska-font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+}
+
+.time {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.field {
+  display: grid;
+  gap: 4px;
+  color: var(--deska-text-secondary);
+}
+
+select {
+  min-height: 30px;
+  min-width: 0;
+  font: inherit;
+  color: var(--deska-text);
+  background: var(--deska-surface);
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius-small);
+  padding: 0 8px;
+}
+
+select:focus-visible {
+  outline: 2px solid var(--deska-focus);
+  outline-offset: 1px;
+}

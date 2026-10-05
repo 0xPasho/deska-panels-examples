@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "hn-front-page",
+  "name": "HN Front Page",
+  "version": "1.0.0",
+  "description": "Top, new, best, Show and Ask stories from Hacker News, with the ones you opened dimmed.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#ff6600",
+  "category": "dev",
+  "permissions": ["open-url"],
+  "network": ["hacker-news.firebaseio.com"],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 400, "height": 480 } }
+  }
+}

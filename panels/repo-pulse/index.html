@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repo Pulse</title>
+  <link rel="stylesheet" href="app.css">
+  <script src="/__deska/sdk.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main class="panel" id="panel" aria-busy="true">
+    <form class="add" id="add" novalidate>
+      <label class="sr-only" for="repo-input">Repository to watch</label>
+      <input id="repo-input" name="repo" type="text" autocomplete="off" autocapitalize="off" spellcheck="false"
+        placeholder="owner/name or a GitHub link" aria-describedby="add-hint">
+      <button type="submit" class="button" id="add-button">Add</button>
+      <p class="hint" id="add-hint" aria-live="polite"></p>
+    </form>
+
+    <ul class="list" id="list" aria-label="Watched repositories"></ul>
+
+    <div class="empty" id="empty" hidden>
+      <p class="empty-title">Not watching any repositories</p>
+      <p class="empty-body">Add a public one above, like denoland/deno.</p>
+    </div>
+
+    <p class="note" id="note" role="status" aria-live="polite" hidden>
+      <span id="note-text"></span>
+      <button type="button" class="link" id="note-retry" hidden>Try again</button>
+    </p>
+
+    <footer class="foot">
+      <span class="budget" id="budget"></span>
+      <span class="foot-end">
+        <span class="updated" id="updated"></span>
+        <button type="button" class="link" id="refresh">Refresh</button>
+      </span>
+    </footer>
+  </main>
+</body>
+</html>

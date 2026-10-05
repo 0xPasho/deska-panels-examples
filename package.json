@@ -1,0 +1,17 @@
+{
+  "name": "deska-panels-examples",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Open source example panels for Deska, each one teaching a different part of the panel SDK.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "preview": "node tools/preview/server.mjs",
+    "check": "node tools/check.mjs",
+    "validate": "node tools/validate.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "devDependencies": {
+    "playwright": "1.60.0"
+  }
+}

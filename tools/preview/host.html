@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel preview</title>
+  <link rel="stylesheet" href="/host.css">
+</head>
+<body>
+  <aside class="side">
+    <label class="field">
+      <span>Panel</span>
+      <select id="panel"></select>
+    </label>
+
+    <fieldset class="field">
+      <legend>Theme</legend>
+      <div class="seg" role="radiogroup" aria-label="Theme">
+        <button type="button" data-theme="dark" aria-pressed="true">Dark</button>
+        <button type="button" data-theme="light" aria-pressed="false">Light</button>
+      </div>
+    </fieldset>
+
+    <fieldset class="field">
+      <legend>Place</legend>
+      <div class="seg" aria-label="Place">
+        <button type="button" data-place="panel" aria-pressed="true">Desk</button>
+        <button type="button" data-place="extras" aria-pressed="false">Extras</button>
+      </div>
+    </fieldset>
+
+    <fieldset class="field">
+      <legend>Visibility</legend>
+      <label class="check"><input type="checkbox" id="visible" checked> Visible</label>
+      <label class="check"><input type="checkbox" id="idle"> Person is away (idle)</label>
+    </fieldset>
+
+    <fieldset class="field" id="extras-box" hidden>
+      <legend>Extras row</legend>
+      <div class="extras-row">
+        <span class="extras-icon" id="extras-ring"><img id="extras-icon" alt=""></span>
+        <span class="extras-text">
+          <span id="extras-title" class="extras-title"></span>
+          <span id="extras-state" class="extras-state"></span>
+        </span>
+        <button type="button" id="extras-control" class="round" hidden></button>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button type="button" id="reload">Reload panel</button>
+      <button type="button" id="clear-storage">Clear storage</button>
+    </div>
+
+    <section class="log-wrap" aria-label="Bridge log">
+      <h2>Bridge log</h2>
+      <ol id="log" class="log"></ol>
+    </section>
+  </aside>
+
+  <main class="stage">
+    <div class="chrome" id="chrome">
+      <div class="chrome-bar">
+        <img id="chrome-icon" alt="">
+        <span id="chrome-title"></span>
+      </div>
+      <div class="frame-box" id="frame-box"></div>
+    </div>
+    <p class="hint">A stand-in for Deska's runtime. Load the folder in Deska before you publish.</p>
+  </main>
+  <script src="/host.js"></script>
+</body>
+</html>

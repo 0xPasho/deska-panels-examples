@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "habit-streaks",
+  "name": "Habit Streaks",
+  "version": "1.0.0",
+  "description": "Check off a few daily habits, keep your streaks, and see the last two weeks at a glance.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#3fae6e",
+  "category": "productivity",
+  "permissions": [],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 360, "height": 380 } }
+  }
+}

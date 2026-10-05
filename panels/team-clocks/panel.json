@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "team-clocks",
+  "name": "Team Clocks",
+  "version": "1.0.0",
+  "description": "Local time for your teammates and cities, how far ahead or behind they are, and whether it is a good hour to reach them.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#4f8fe6",
+  "category": "productivity",
+  "permissions": [],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 340, "height": 300 } }
+  }
+}

@@ -1,0 +1,401 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px/1.4 var(--deska-font-ui);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+p {
+  margin: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--deska-focus);
+  outline-offset: 2px;
+}
+
+.app {
+  padding: 14px 14px 12px;
+  min-width: 0;
+}
+
+.loading {
+  color: var(--deska-text-secondary);
+  padding: 8px 0;
+}
+
+/* Transport: the one accent button, and what is playing. */
+
+.transport {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.play {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 84px;
+  height: 32px;
+  padding: 0 14px 0 12px;
+  border: 0;
+  border-radius: var(--deska-radius);
+  background: var(--deska-accent);
+  color: var(--deska-on-accent);
+  font-weight: 600;
+  cursor: pointer;
+  transition-property: scale, opacity;
+  transition-duration: 120ms;
+  transition-timing-function: ease-out;
+}
+
+.play:active:not(:disabled) {
+  scale: 0.96;
+}
+
+.play:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.play .icon-pause,
+.play.playing .icon-play {
+  display: none;
+}
+
+.play.playing .icon-pause {
+  display: block;
+}
+
+.now {
+  min-width: 0;
+  flex: 1;
+}
+
+.now-title {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.now-sub {
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Level meter: a thin, calm bar. */
+
+.meter {
+  height: 3px;
+  margin: 12px 0 4px;
+  border-radius: 2px;
+  background: var(--deska-border);
+  overflow: hidden;
+}
+
+.meter-fill {
+  display: block;
+  height: 100%;
+  background: var(--deska-text-tertiary);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 200ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .meter-fill,
+  .play {
+    transition: none;
+  }
+}
+
+.notice {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+  margin-top: 8px;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.text-button {
+  min-height: 28px;
+  padding: 0 6px;
+  margin: 0 -6px;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  background: none;
+  color: var(--deska-text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.text-button:hover {
+  background: var(--deska-surface);
+}
+
+/* Sounds: a quiet flat list, a toggle and a slider per row. */
+
+.sounds {
+  list-style: none;
+  margin: 8px 0 6px;
+  padding: 0;
+}
+
+.sound,
+.row {
+  display: grid;
+  grid-template-columns: minmax(96px, 1fr) minmax(0, 1.4fr);
+  align-items: center;
+  gap: 12px;
+  min-height: 32px;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 28px;
+  padding: 0 6px;
+  margin-left: -6px;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  background: none;
+  color: var(--deska-text-secondary);
+  text-align: left;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  background: var(--deska-surface);
+  color: var(--deska-text);
+}
+
+.name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.box {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--deska-text-tertiary);
+  border-radius: 4px;
+}
+
+.box svg {
+  width: 10px;
+  height: 10px;
+  fill: none;
+  stroke: var(--deska-bg);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+}
+
+.sound.on .toggle {
+  color: var(--deska-text);
+}
+
+.sound.on .box {
+  border-color: var(--deska-text);
+  background: var(--deska-text);
+}
+
+.sound.on .box svg {
+  opacity: 1;
+}
+
+.sound:not(.on) .slider {
+  opacity: 0.55;
+}
+
+.row {
+  border-top: 1px solid var(--deska-border);
+  padding-top: 6px;
+  margin-top: 4px;
+}
+
+.row + .row {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.row-label {
+  color: var(--deska-text-secondary);
+}
+
+/* Range: a token-colored track with the filled part in text color. */
+
+.slider {
+  --fill: 50%;
+  appearance: none;
+  width: 100%;
+  min-width: 0;
+  height: 28px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    var(--deska-text-secondary) var(--fill),
+    color-mix(in srgb, var(--deska-text) 14%, transparent) var(--fill)
+  );
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;
+  border-radius: 50%;
+  background: var(--deska-text);
+  box-shadow: 0 0 0 3px var(--deska-bg);
+}
+
+.slider:focus-visible {
+  outline-offset: 0;
+}
+
+/* Sleep timer: a quiet segmented control, given the row's full width. */
+
+.row-sleep {
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+}
+
+.seg {
+  display: flex;
+  gap: 2px;
+  min-width: 0;
+}
+
+.seg button {
+  flex: 1;
+  min-width: 0;
+  min-height: 28px;
+  padding: 0 2px;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  background: none;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.seg button:hover {
+  color: var(--deska-text);
+}
+
+.seg button[aria-pressed='true'] {
+  background: var(--deska-surface-raised);
+  color: var(--deska-text);
+  font-weight: 600;
+}
+
+/* Failure state. */
+
+.failure {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  padding: 8px 0;
+  color: var(--deska-text-secondary);
+}
+
+.quiet {
+  min-height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius);
+  background: var(--deska-surface);
+  cursor: pointer;
+}
+
+/* Extras popover: tighter, no meter, the notice says where sound plays. */
+
+.compact .app {
+  padding: 10px 12px;
+}
+
+.compact .meter {
+  display: none;
+}
+
+.compact .notice {
+  margin-top: 6px;
+}
+
+.compact .sounds {
+  margin-top: 4px;
+}
+
+.compact .sound,
+.compact .row {
+  min-height: 30px;
+}
+
+@media (max-width: 300px) {
+  .sound,
+  .row {
+    grid-template-columns: minmax(84px, 1fr) minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .row-sleep {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+}

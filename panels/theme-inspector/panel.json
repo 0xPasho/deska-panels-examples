@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "theme-inspector",
+  "name": "Theme Inspector",
+  "version": "1.0.0",
+  "description": "Every theme token your panel receives, live: values, contrast checks and a sample built only from tokens. Click to copy.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#8a6fe0",
+  "category": "dev",
+  "permissions": ["clipboard-write"],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 380, "height": 460 } }
+  }
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Theme Inspector</title>
+  <link rel="stylesheet" href="app.css">
+  <!-- The SDK first, as a classic script, so window.deska exists before app.js runs. -->
+  <script src="/__deska/sdk.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main id="app" aria-busy="true">
+    <header class="top">
+      <div class="mode">
+        <p class="mode-name" id="mode-name">Waiting for the theme</p>
+        <p class="mode-detail" id="mode-detail"></p>
+      </div>
+      <button type="button" class="quiet" id="copy-css" disabled>Copy as CSS</button>
+    </header>
+
+    <div class="tabs" role="tablist" aria-label="Views">
+      <button type="button" role="tab" id="tab-tokens" aria-controls="view-tokens" data-view="tokens">Tokens</button>
+      <button type="button" role="tab" id="tab-contrast" aria-controls="view-contrast" data-view="contrast">Contrast</button>
+      <button type="button" role="tab" id="tab-specimen" aria-controls="view-specimen" data-view="specimen">Sample</button>
+    </div>
+
+    <div class="scroll" id="scroll">
+      <section class="view" id="view-tokens" role="tabpanel" aria-labelledby="tab-tokens" tabindex="-1" hidden>
+        <p class="hint">Click a token to copy its <code>var()</code>.</p>
+        <h2 class="group-title">Colors</h2>
+        <ul class="tokens" id="list-colors"></ul>
+        <h2 class="group-title">Fonts</h2>
+        <ul class="tokens" id="list-fonts"></ul>
+        <h2 class="group-title">Radii</h2>
+        <ul class="tokens" id="list-radii"></ul>
+      </section>
+
+      <section class="view" id="view-contrast" role="tabpanel" aria-labelledby="tab-contrast" tabindex="-1" hidden>
+        <p class="hint">Each text color measured against the two grounds a panel draws on. AA needs 4.5 for body text and 3 for large text; AAA needs 7.</p>
+        <table class="contrast">
+          <thead>
+            <tr><th scope="col">Text</th><th scope="col">On bg</th><th scope="col">On surface</th></tr>
+          </thead>
+          <tbody id="contrast-rows"></tbody>
+        </table>
+      </section>
+
+      <section class="view" id="view-specimen" role="tabpanel" aria-labelledby="tab-specimen" tabindex="-1" hidden>
+        <p class="hint">A small panel drawn only from tokens. It follows every theme and accent.</p>
+        <form class="card" id="specimen-form">
+          <div class="card-head">
+            <h3>Release checklist</h3>
+            <p class="secondary">Updated 5 minutes ago</p>
+          </div>
+          <ul class="rows">
+            <li class="row"><span>Build passes</span><span class="ok">Done</span></li>
+            <li class="row"><span>Notes reviewed</span><span class="ok">Done</span></li>
+            <li class="row"><span>Store screenshots</span><span class="bad">Blocked</span></li>
+            <li class="row"><span>Tag the release</span><span class="tertiary">Waiting</span></li>
+          </ul>
+          <label class="field">
+            <span>Note</span>
+            <input id="specimen-input" autocomplete="off" placeholder="Add a note for the team">
+          </label>
+          <div class="actions">
+            <button type="button" class="quiet">Cancel</button>
+            <button type="submit" class="primary">Save</button>
+          </div>
+        </form>
+      </section>
+
+      <p class="empty" id="empty" hidden></p>
+    </div>
+
+    <p class="notice" id="notice" role="status" aria-live="polite"></p>
+  </main>
+</body>
+</html>

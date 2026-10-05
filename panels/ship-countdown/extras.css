@@ -1,0 +1,116 @@
+/* The compact view Extras shows inside its popover. Builds on app.css. */
+
+.compact {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px;
+}
+
+.compact p {
+  margin: 0;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 0;
+}
+
+.empty .name {
+  color: var(--deska-text);
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* The same 0 to 1 the row in Extras draws around the icon, drawn bigger here. */
+.ring {
+  flex: none;
+  width: 72px;
+  height: 72px;
+  rotate: -90deg;
+}
+
+.ring circle {
+  fill: none;
+  stroke-width: 5;
+}
+
+.ring .track {
+  stroke: var(--deska-surface-raised);
+}
+
+.ring .arc {
+  stroke: color-mix(in srgb, var(--deska-text) 70%, transparent);
+  stroke-linecap: round;
+  stroke-dasharray: 0 100;
+  transition: stroke-dasharray 400ms ease-out;
+}
+
+.hero.done .arc {
+  stroke: var(--deska-success);
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.hero .clock {
+  margin: 6px 0 2px;
+  gap: 10px;
+}
+
+.hero .unit b {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.hero.done .clock {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--deska-success);
+}
+
+.dismiss {
+  margin: 4px 0 0 -8px;
+}
+
+.later {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--deska-border);
+}
+
+.later li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--deska-border);
+}
+
+.later li:last-child {
+  border-bottom: 0;
+}
+
+.later .label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.later .left {
+  flex: none;
+  color: var(--deska-text-secondary);
+}

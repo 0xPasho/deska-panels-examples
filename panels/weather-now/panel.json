@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "weather-now",
+  "name": "Weather Now",
+  "version": "1.0.0",
+  "description": "Current weather, the next 12 hours and five days for the places you save, in the units your locale uses.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#3b82c4",
+  "category": "ambient",
+  "permissions": ["open-url"],
+  "network": ["api.open-meteo.com", "geocoding-api.open-meteo.com"],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 360, "height": 440 } }
+  }
+}

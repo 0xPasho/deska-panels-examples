@@ -1,0 +1,352 @@
+/* Every color, font and radius here is a Deska token. The SDK writes them on
+   <html> and sets color-scheme, so this file never names a color of its own. */
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px/1.45 var(--deska-font-ui);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+code { font-family: var(--deska-font-mono); font-size: 12px; }
+
+button { font: inherit; color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--deska-focus);
+  outline-offset: 2px;
+}
+
+/* --- header ---------------------------------------------------------------- */
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 12px 8px;
+}
+
+.mode { flex: 1; min-width: 0; }
+
+.mode-name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.mode-detail {
+  margin: 0;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.quiet {
+  flex: none;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-surface);
+  cursor: pointer;
+  transition-property: background-color, scale;
+  transition-duration: 120ms;
+}
+.quiet:hover:not(:disabled) { background: var(--deska-surface-raised); }
+.quiet:active:not(:disabled) { scale: 0.96; }
+.quiet:disabled { color: var(--deska-text-tertiary); cursor: default; }
+
+/* --- tabs ------------------------------------------------------------------ */
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--deska-border);
+}
+
+[role="tab"] {
+  min-height: 32px;
+  padding: 0 8px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background: none;
+  color: var(--deska-text-secondary);
+  cursor: pointer;
+  transition-property: color;
+  transition-duration: 120ms;
+}
+[role="tab"]:hover { color: var(--deska-text); }
+[role="tab"][aria-selected="true"] {
+  color: var(--deska-text);
+  border-bottom-color: var(--deska-text);
+}
+[role="tab"]:focus-visible { outline-offset: -2px; }
+
+/* --- views ----------------------------------------------------------------- */
+
+.scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 4px 12px 12px;
+}
+
+.view:focus { outline: none; }
+
+.hint {
+  margin: 8px 0 4px;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+}
+.hint code { font-size: 11px; }
+
+.group-title {
+  margin: 14px 0 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--deska-text-secondary);
+}
+
+.empty {
+  margin: 24px 0;
+  color: var(--deska-text-secondary);
+  text-align: center;
+}
+
+/* --- token rows -------------------------------------------------------------- */
+
+.tokens {
+  list-style: none;
+  margin: 0 -6px;
+  padding: 0;
+}
+
+.token {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 32px;
+  padding: 4px 6px;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  background: none;
+  text-align: start;
+  cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 100ms;
+}
+.token:hover { background: var(--deska-surface); }
+.token:active { background: var(--deska-surface-raised); }
+.token:focus-visible { outline-offset: -2px; }
+
+.swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--deska-radius-small);
+  /* A hairline so a swatch the same color as the ground still shows. */
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--deska-text) 18%, transparent);
+}
+
+.font-sample {
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+}
+
+.corner {
+  width: 18px;
+  height: 18px;
+  border-top: 2px solid var(--deska-text-secondary);
+  border-left: 2px solid var(--deska-text-secondary);
+}
+
+.token-label {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.token-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.token-role {
+  color: var(--deska-text-tertiary);
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.token-value {
+  max-width: 14ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--deska-text-secondary);
+}
+.missing { color: var(--deska-text-tertiary); }
+
+/* --- contrast ---------------------------------------------------------------- */
+
+.contrast {
+  width: 100%;
+  margin-top: 6px;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.contrast th,
+.contrast td {
+  padding: 7px 4px;
+  border-bottom: 1px solid var(--deska-border);
+  text-align: start;
+  vertical-align: baseline;
+  font-weight: 400;
+}
+.contrast tr:last-child > * { border-bottom: 0; }
+
+.contrast thead th {
+  padding-top: 4px;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.contrast-name { overflow-wrap: anywhere; }
+
+.contrast-where {
+  display: block;
+  color: var(--deska-text-tertiary);
+  font-size: 11px;
+}
+
+.ratio { margin-inline-end: 6px; }
+
+.verdict { color: var(--deska-text-secondary); font-size: 12px; }
+.verdict.fail { color: var(--deska-danger); }
+
+/* --- the sample ---------------------------------------------------------------- */
+
+.card {
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius);
+  background: var(--deska-surface);
+}
+
+.card-head h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.secondary {
+  margin: 0;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+}
+
+.rows {
+  list-style: none;
+  margin: 10px -6px;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 28px;
+  align-items: center;
+  padding: 0 6px;
+  border-radius: var(--deska-radius-small);
+}
+.row:hover { background: var(--deska-surface-raised); }
+.row > span:first-child { min-width: 0; overflow-wrap: anywhere; }
+
+.ok { color: var(--deska-success); }
+.bad { color: var(--deska-danger); }
+.tertiary { color: var(--deska-text-tertiary); }
+
+.field {
+  display: grid;
+  gap: 4px;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+}
+
+.field input {
+  min-height: 30px;
+  padding: 0 8px;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px var(--deska-font-ui);
+}
+.field input::placeholder { color: var(--deska-text-tertiary); }
+.field input:focus-visible { outline-offset: 0; border-color: var(--deska-focus); }
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.primary {
+  min-height: 28px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-accent);
+  color: var(--deska-on-accent);
+  font-weight: 600;
+  cursor: pointer;
+  transition-property: scale, filter;
+  transition-duration: 120ms;
+}
+.primary:hover { filter: brightness(1.06); }
+.primary:active { scale: 0.96; }
+
+/* --- the notice line ---------------------------------------------------------- */
+
+.notice {
+  flex: none;
+  min-height: 30px;
+  margin: 0;
+  padding: 6px 12px;
+  border-top: 1px solid var(--deska-border);
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.notice:empty { visibility: hidden; }
+.notice[data-kind="error"] { color: var(--deska-danger); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0ms !important; }
+}

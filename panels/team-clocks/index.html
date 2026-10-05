@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Clocks</title>
+  <link rel="stylesheet" href="app.css">
+  <!-- The SDK first, as a classic script, so window.deska exists before app.js runs. -->
+  <script src="/__deska/sdk.js"></script>
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main id="app" aria-busy="true">
+    <p class="status" id="status">Loading</p>
+
+    <ul class="clocks" id="clocks" aria-label="Clocks" hidden></ul>
+
+    <footer class="footer" id="footer" hidden>
+      <button type="button" class="text-button" id="add-open">Add a place</button>
+      <p class="notice" id="notice" role="status"></p>
+    </footer>
+
+    <form class="add" id="add-form" hidden>
+      <label class="field">
+        <span>Time zone</span>
+        <input id="zone" list="zones" autocomplete="off" spellcheck="false" placeholder="Search, like Tokyo or Berlin" aria-describedby="form-error" required>
+      </label>
+      <datalist id="zones"></datalist>
+      <label class="field">
+        <span>Label <span class="optional">(optional)</span></span>
+        <input id="label" autocomplete="off" maxlength="40" placeholder="A name or a city">
+      </label>
+      <p class="form-error" id="form-error" role="alert"></p>
+      <div class="actions">
+        <button type="button" class="text-button" id="add-cancel">Cancel</button>
+        <button type="submit" class="primary">Add</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

@@ -1,0 +1,352 @@
+:root {
+  color-scheme: dark;
+  --line: color-mix(in oklch, var(--deska-text) 10%, transparent);
+  --hover: color-mix(in oklch, var(--deska-text) 6%, transparent);
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px/1.4 var(--deska-font-ui);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+button, input { font: inherit; color: inherit; }
+
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0;
+  transition-property: background-color, color, scale;
+  transition-duration: 120ms;
+  transition-timing-function: var(--ease);
+}
+
+button:disabled { cursor: default; }
+
+:focus-visible {
+  outline: 2px solid var(--deska-focus);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+p { margin: 0; }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+/* Player ------------------------------------------------------------------- */
+
+.player {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 14px 8px;
+}
+
+.cover {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--deska-radius);
+  outline: 1px solid var(--line);
+  outline-offset: -1px;
+  object-fit: cover;
+  background: var(--deska-surface);
+}
+
+.cover[hidden], .cover-empty[hidden] { display: none; }
+
+.now { min-width: 0; }
+
+.station {
+  font-size: 15px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.track {
+  color: var(--deska-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-height: 1.4em;
+}
+
+.status {
+  color: var(--deska-text-tertiary);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  min-height: 1.4em;
+  overflow-wrap: anywhere;
+}
+
+.status[data-tone="danger"] { color: var(--deska-danger); }
+
+/* The one accent in the view: the button that starts or stops the music. */
+.play {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--deska-accent);
+  color: var(--deska-on-accent);
+  display: grid;
+  place-items: center;
+}
+
+.play:hover:not(:disabled) { background: color-mix(in oklch, var(--deska-accent) 88%, var(--deska-text)); }
+.play:active:not(:disabled) { scale: 0.96; }
+.play:disabled {
+  background: var(--deska-surface-raised);
+  color: var(--deska-text-tertiary);
+}
+
+.play .icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition-property: opacity, scale, filter;
+  transition-duration: 200ms;
+  transition-timing-function: var(--ease);
+}
+
+/* The play triangle's mass sits left of its box: nudge it right. */
+.play .icon-play { translate: 1px 0; }
+.play .icon-pause { opacity: 0; scale: 0.25; filter: blur(4px); }
+.play.is-live .icon-play { opacity: 0; scale: 0.25; filter: blur(4px); }
+.play.is-live .icon-pause { opacity: 1; scale: 1; filter: blur(0); }
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px 10px;
+  min-width: 0;
+}
+
+.volume {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  color: var(--deska-text-secondary);
+}
+
+.icon-line {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+input[type="range"] {
+  flex: 1;
+  min-width: 60px;
+  height: 28px;
+  margin: 0;
+  accent-color: var(--deska-text-secondary);
+  background: transparent;
+}
+
+.quiet, .link {
+  min-height: 28px;
+  padding: 0 8px;
+  border-radius: var(--deska-radius-small);
+  white-space: nowrap;
+}
+
+.quiet {
+  background: var(--deska-surface-raised);
+  color: var(--deska-text);
+}
+
+.quiet:hover { background: color-mix(in oklch, var(--deska-surface-raised) 85%, var(--deska-text)); }
+
+.link { color: var(--deska-text-secondary); }
+.link:hover { color: var(--deska-text); background: var(--hover); }
+
+/* Search ------------------------------------------------------------------- */
+
+.search { padding: 0 14px 8px; margin: 0; }
+
+.search input {
+  width: 100%;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-surface);
+}
+
+.search input::placeholder { color: var(--deska-text-tertiary); }
+.search input:focus-visible { outline-offset: 0; }
+
+.notice {
+  margin: 0 14px 8px;
+  padding: 8px 10px;
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-surface);
+  color: var(--deska-text-secondary);
+  overflow-wrap: anywhere;
+}
+
+/* Lists -------------------------------------------------------------------- */
+
+.lists {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 6px 6px;
+  border-top: 1px solid var(--deska-border);
+}
+
+.heading {
+  margin: 0;
+  padding: 10px 8px 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--deska-text-secondary);
+}
+
+.list { list-style: none; margin: 0; padding: 0; }
+
+.row {
+  display: flex;
+  align-items: center;
+  border-radius: var(--deska-radius);
+}
+
+.row:hover { background: var(--hover); }
+.row.is-current { background: var(--deska-surface); }
+
+.pick {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 4px 6px 8px;
+  border-radius: var(--deska-radius);
+  text-align: start;
+}
+
+.thumb {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: var(--deska-radius-small);
+  outline: 1px solid var(--line);
+  outline-offset: -1px;
+  background: var(--deska-surface-raised);
+  object-fit: cover;
+}
+
+.row-text { display: flex; flex-direction: column; min-width: 0; }
+
+.row-title, .row-meta, .row-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row-title { font-weight: 500; }
+.row.is-current .row-title { font-weight: 600; }
+.row-meta { color: var(--deska-text-secondary); font-size: 12px; font-variant-numeric: tabular-nums; }
+.row-desc { color: var(--deska-text-tertiary); font-size: 12px; }
+
+.star {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  margin-inline-end: 2px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--deska-radius-small);
+  color: var(--deska-text-tertiary);
+}
+
+.star svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.star:hover { color: var(--deska-text); background: var(--hover); }
+.star[aria-pressed="true"] { color: var(--deska-text-secondary); }
+.star[aria-pressed="true"] svg { fill: currentColor; }
+
+.empty {
+  padding: 24px 12px;
+  text-align: center;
+  color: var(--deska-text-secondary);
+  overflow-wrap: anywhere;
+}
+
+/* Credit ------------------------------------------------------------------- */
+
+.credit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  padding: 6px 8px 6px 14px;
+  border-top: 1px solid var(--deska-border);
+  color: var(--deska-text-tertiary);
+  font-size: 12px;
+}
+
+.credit .link { padding: 0 6px; }
+
+/* Inside Extras: a compact player for a small popover. -------------------- */
+
+[data-place="extras"] .player { padding: 12px 12px 6px; gap: 10px; }
+[data-place="extras"] .cover { width: 44px; height: 44px; }
+[data-place="extras"] .station { font-size: 14px; }
+[data-place="extras"] .controls { padding: 0 12px 8px; }
+[data-place="extras"] .search,
+[data-place="extras"] .row-desc { display: none; }
+[data-place="extras"] .pick { padding-block: 4px; }
+[data-place="extras"] .thumb { width: 28px; height: 28px; }
+
+/* Narrow panels: the description line goes first. */
+@media (max-width: 300px) {
+  .row-desc { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button, .play .icon { transition-duration: 0ms; }
+}

@@ -1,0 +1,413 @@
+/* Colors, fonts and radii come only from Deska's tokens, which the SDK writes
+   on <html> (contract section 7), so the panel follows the app's theme. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px/1.45 var(--deska-font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+main {
+  padding: 10px 12px 16px;
+}
+
+code,
+pre,
+.line {
+  font-family: var(--deska-font-mono);
+  font-size: 12px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.intro {
+  margin: 0 0 10px;
+  color: var(--deska-text-secondary);
+  text-wrap: pretty;
+}
+
+.waiting,
+.empty {
+  margin: 0;
+  color: var(--deska-text-tertiary);
+}
+
+/* --- Sections: quiet disclosure rows ------------------------------------ */
+
+.sections {
+  border-top: 1px solid var(--deska-border);
+}
+
+details {
+  border-bottom: 1px solid var(--deska-border);
+}
+
+summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 4px 4px 4px 2px;
+  cursor: pointer;
+  list-style: none;
+  border-radius: var(--deska-radius-small);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* A chevron drawn from two borders, so it takes the text color. */
+summary::before {
+  content: '';
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin: 0 4px 0 3px;
+  border-right: 1.5px solid var(--deska-text-tertiary);
+  border-bottom: 1.5px solid var(--deska-text-tertiary);
+  rotate: -45deg;
+  transition: rotate 150ms ease-out;
+}
+
+details[open] > summary::before {
+  rotate: 45deg;
+}
+
+summary:hover .name {
+  color: var(--deska-text);
+}
+
+summary .name {
+  font-weight: 500;
+  color: var(--deska-text);
+}
+
+summary .api {
+  margin-left: auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--deska-text-tertiary);
+}
+
+.body {
+  display: grid;
+  gap: 10px;
+  padding: 2px 0 14px 20px;
+  margin: 0;
+}
+
+/* --- Live values -------------------------------------------------------- */
+
+.live {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 4px 12px;
+  margin: 0;
+}
+
+.live div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+
+.live dt {
+  color: var(--deska-text-secondary);
+}
+
+.live dd {
+  margin: 0;
+  font-family: var(--deska-font-mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Forms -------------------------------------------------------------- */
+
+.field {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  color: var(--deska-text-secondary);
+}
+
+.field > span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.hint {
+  color: var(--deska-text-tertiary);
+}
+
+output {
+  margin-left: auto;
+  color: var(--deska-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+input:not([type='range']),
+textarea,
+select {
+  width: 100%;
+  min-height: 30px;
+  padding: 5px 8px;
+  line-height: 18px;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-surface);
+  color: var(--deska-text);
+  font: inherit;
+}
+
+input:not([type='range']),
+select {
+  height: 30px;
+  padding-block: 0;
+}
+
+textarea {
+  resize: vertical;
+  font-family: var(--deska-font-mono);
+  font-size: 12px;
+}
+
+input:hover:not([type='range']),
+textarea:hover,
+select:hover {
+  border-color: color-mix(in srgb, var(--deska-text-tertiary) 50%, var(--deska-border));
+}
+
+input[type='range'] {
+  width: 100%;
+  height: 28px;
+  margin: 0;
+  accent-color: var(--deska-text-secondary);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+button {
+  min-height: 28px;
+  padding: 4px 10px;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-surface-raised);
+  color: var(--deska-text);
+  font: inherit;
+  cursor: pointer;
+  transition-property: background-color, scale;
+  transition-duration: 120ms;
+  transition-timing-function: ease-out;
+}
+
+button:hover {
+  background: color-mix(in srgb, var(--deska-text) 8%, var(--deska-surface-raised));
+}
+
+button:active {
+  scale: 0.96;
+}
+
+/* The one filled button: Apply, the commit of the longest form. */
+button.primary {
+  border-color: transparent;
+  background: var(--deska-accent);
+  color: var(--deska-on-accent);
+  font-weight: 500;
+}
+
+button.primary:hover {
+  background: color-mix(in srgb, var(--deska-on-accent) 10%, var(--deska-accent));
+}
+
+:focus-visible {
+  outline: 2px solid var(--deska-focus);
+  outline-offset: 1px;
+}
+
+/* --- Output: the line that ran, and what came back ---------------------- */
+
+.out {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.line {
+  display: block;
+  padding: 6px 8px;
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-surface);
+  color: var(--deska-text);
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  /* One click selects the whole line, ready to copy. */
+  user-select: all;
+}
+
+.line:empty {
+  display: none;
+}
+
+.status {
+  margin: 0;
+  color: var(--deska-text-secondary);
+}
+
+.status[data-kind='ok'] {
+  color: var(--deska-success);
+}
+
+.status[data-kind='error'] {
+  color: var(--deska-danger);
+}
+
+.status code {
+  font-weight: 500;
+}
+
+.value {
+  margin: 0;
+  max-height: 200px;
+  overflow: auto;
+  padding: 6px 8px;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius-small);
+  color: var(--deska-text-secondary);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.meaning {
+  margin: 0;
+  color: var(--deska-text-secondary);
+  text-wrap: pretty;
+}
+
+.meaning-label {
+  color: var(--deska-text);
+  font-weight: 500;
+}
+
+/* --- Event log ---------------------------------------------------------- */
+
+.events {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.events li {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--deska-border);
+  align-items: baseline;
+}
+
+.events li:last-child {
+  border-bottom: 0;
+}
+
+.events time {
+  color: var(--deska-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.events .detail {
+  min-width: 0;
+  color: var(--deska-text-secondary);
+  font-family: var(--deska-font-mono);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+/* --- Error code reference ----------------------------------------------- */
+
+.codes {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+}
+
+.codes dt {
+  margin-top: 6px;
+}
+
+.codes dt:first-child {
+  margin-top: 0;
+}
+
+.codes dd {
+  margin: 0;
+  color: var(--deska-text-secondary);
+  text-wrap: pretty;
+}
+
+.label {
+  margin: 4px 0 0;
+  color: var(--deska-text-secondary);
+}
+
+/* --- Extras view -------------------------------------------------------- */
+
+.extras-view #content {
+  display: grid;
+  gap: 10px;
+}
+
+.extras-view .intro {
+  margin: 0;
+}
+
+.extras-view .label {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  summary::before,
+  button {
+    transition: none;
+  }
+
+  button:active {
+    scale: none;
+  }
+}
