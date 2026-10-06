@@ -71,9 +71,28 @@ git clone https://github.com/0xPasho/deska-panels-examples.git
    `id`, `name` and `author` in `panel.json`.
 3. Preview it next to your editor, then load the folder in Deska.
 
-The full contract (every `panel.json` field, every bridge method, every limit)
-is the guide at
-[deska.dev/docs/community-panels](https://deska.dev/docs/community-panels).
+Every bridge method, with its arguments, permission, errors and limits, is in
+the [SDK reference](https://deska.dev/docs/panel-sdk); every `panel.json`
+field is in the [panel.json reference](https://deska.dev/docs/panel-manifest).
+
+## Documentation
+
+The maintained guide lives on deska.dev, in English and Spanish:
+
+- [Build panels](https://deska.dev/docs/build-panels): what a panel is and
+  where everything is documented.
+- [Build your first panel](https://deska.dev/docs/tutorial-first-panel): the
+  tutorial, step by step.
+- [SDK reference](https://deska.dev/docs/panel-sdk): every method of
+  `window.deska`, the init payload, the properties and the events.
+- [panel.json reference](https://deska.dev/docs/panel-manifest): every field,
+  the ids that are refused, and the package limits.
+- [The sandbox](https://deska.dev/docs/panel-sandbox): what a panel cannot do,
+  rule by rule, and what to do instead.
+- [Publishing](https://deska.dev/docs/panel-publishing): applying to publish,
+  versions, permissions asked again, and limits.
+- [The panel marketplace](https://deska.dev/panels): every panel you can
+  install, these examples included.
 
 ## Tools in this repo
 

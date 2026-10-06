@@ -12,7 +12,7 @@ This is the smallest panel in the repo and the one to copy when you start your o
 - **`deska.ready()` and the init payload**: `app.js`, step 1. The panel waits for Deska before touching the bridge, then formats every time with `init.locale` in `timeIn()`.
 - **Theme tokens as CSS variables**: `app.js`, step 2, and all of `app.css`. The SDK writes the `--deska-*` tokens on `<html>` and keeps them current, so the panel never listens to `deska.on('theme')`.
 - **`deska.storage.get` and `set`**: `load()` reads the list (a `null` means first run, which seeds three examples) and `save()` writes it after every add or remove, answering `storage_full` and `rate_limited` by their codes.
-- **`deska.setTitle`**: `updateTitle()` puts the first place's time under the panel's name on the canvas, and clears it with `null` when the list is empty.
+- **`deska.setTitle`**: `updateTitle()` puts the first place's time under the panel's name on the canvas, and, with the list empty, sets the panel's own name: Deska refuses a `null` or empty title.
 - **`deska.on('visibility')`**: `startClock()` and `stopClock()`. The clock ticks once a minute while the panel is visible and stops while it is hidden, catching up the moment it shows again.
 
 ## Permissions and hosts

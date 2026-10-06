@@ -1,5 +1,11 @@
 # Build your first panel
 
+> The maintained version of this tutorial is on deska.dev:
+> [Build your first panel](https://deska.dev/docs/tutorial-first-panel), with
+> the [SDK reference](https://deska.dev/docs/panel-sdk) and the rest of the
+> [Build panels](https://deska.dev/docs/build-panels) guide. This copy follows
+> the same steps for reading next to the code.
+
 In about fifteen minutes you build a small clock panel, run it next to your
 editor, load it in Deska and get it ready to publish. The finished result is
 the [`starter/`](../starter) folder in this repo; copy it if you would rather
@@ -47,7 +53,7 @@ my-first-panel/
   copy, or reach the internet. Ask only for what you use; people see the list
   before they install.
 - Every field is described in the
-  [guide](https://deska.dev/docs/community-panels#build).
+  [panel.json reference](https://deska.dev/docs/panel-manifest).
 
 ## 2. Load the SDK in index.html
 
@@ -197,12 +203,15 @@ with what it saved.
 
 ## 7. Publish
 
-Publishing is open to invited authors for now. In *Build a panel*, press
-*Ask to publish*, or write to help@deska.dev about what you are building.
+Publishing is open to invited authors for now. Apply at
+[deska.dev/panels/apply](https://deska.dev/panels/apply) (*Ask to publish* in
+*Build a panel* leads there too), or write to help@deska.dev about what you are
+building.
 
 Once your account can publish, open the loaded folder's page in *Build a
 panel*, press *Publish*, write what changed and confirm. A published version
-never changes: raise `version` in `panel.json` for every release.
+never changes: raise `version` in `panel.json` for every release. The rest is
+in [Publishing](https://deska.dev/docs/panel-publishing).
 
 ## Rules that save you a debugging session
 
