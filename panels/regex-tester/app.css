@@ -1,0 +1,522 @@
+/* Every color, font and radius below comes from Deska's theme tokens, which
+   the SDK writes on <html>: the panel follows every theme and accent. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px/1.45 var(--deska-font-ui);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.no-transitions *,
+.no-transitions *::before,
+.no-transitions *::after {
+  transition: none !important;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--deska-focus);
+  outline-offset: 1px;
+}
+
+svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Buttons ---------------------------------------------------------------- */
+
+.quiet,
+.primary,
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 28px;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  white-space: nowrap;
+  transition-property: background-color, color, scale;
+  transition-duration: 120ms;
+  transition-timing-function: ease-out;
+}
+
+.quiet {
+  padding: 0 8px;
+  background: transparent;
+  color: var(--deska-text-secondary);
+}
+
+.quiet:hover {
+  background: color-mix(in srgb, var(--deska-text) 8%, transparent);
+  color: var(--deska-text);
+}
+
+.quiet[aria-pressed='true'] {
+  background: var(--deska-surface-raised);
+  color: var(--deska-text);
+}
+
+.primary {
+  padding: 0 12px;
+  background: var(--deska-accent);
+  color: var(--deska-on-accent);
+  font-weight: 500;
+}
+
+.primary:hover {
+  background: color-mix(in srgb, var(--deska-accent) 88%, var(--deska-text));
+}
+
+.icon-button {
+  width: 28px;
+  padding: 0;
+  background: transparent;
+  color: var(--deska-text-secondary);
+}
+
+.icon-button:hover {
+  background: color-mix(in srgb, var(--deska-text) 8%, transparent);
+  color: var(--deska-text);
+}
+
+.quiet:active,
+.primary:active,
+.icon-button:active {
+  scale: 0.96;
+}
+
+.quiet:disabled,
+.primary:disabled,
+.icon-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+  scale: none;
+}
+
+/* Fields ----------------------------------------------------------------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.field-label {
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-surface);
+  outline: none;
+  transition-property: border-color, box-shadow;
+  transition-duration: 120ms;
+}
+
+.input,
+.select {
+  height: 30px;
+  padding: 0 8px;
+}
+
+.textarea {
+  padding: 6px 8px;
+  resize: none;
+  line-height: 1.5;
+}
+
+.mono {
+  font-family: var(--deska-font-mono);
+  font-size: 12px;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--deska-text-tertiary);
+}
+
+.input:focus-visible,
+.textarea:focus-visible,
+.select:focus-visible {
+  border-color: var(--deska-focus);
+  box-shadow: 0 0 0 1px var(--deska-focus);
+  outline: none;
+}
+
+.input[aria-invalid='true'],
+.textarea[aria-invalid='true'] {
+  border-color: var(--deska-danger);
+}
+
+/* Segmented choice: a row of buttons where one is pressed. */
+.seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 2px;
+  border-radius: calc(var(--deska-radius-small) + 2px);
+  background: var(--deska-surface);
+}
+
+.seg .quiet {
+  min-height: 24px;
+  padding: 0 8px;
+}
+
+/* Status line at the foot of a panel. */
+.status {
+  flex: none;
+  margin: 0;
+  padding: 0 12px;
+  min-height: 0;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.status:not(:empty) {
+  padding: 6px 12px 8px;
+  border-top: 1px solid var(--deska-border);
+}
+
+.status.is-error {
+  color: var(--deska-danger);
+}
+
+.status.is-ok {
+  color: var(--deska-success);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0ms !important;
+  }
+  .quiet:active,
+  .primary:active,
+  .icon-button:active {
+    scale: none;
+  }
+}
+
+/* Panel ---------------------------------------------------------------------- */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+.top .seg {
+  align-self: flex-start;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 10px 6px;
+}
+
+.pattern-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.pattern-row .input {
+  flex: 1;
+}
+
+.slash {
+  color: var(--deska-text-secondary);
+  font: 14px var(--deska-font-mono);
+}
+
+.flags {
+  display: inline-flex;
+  gap: 1px;
+  margin-inline-start: 4px;
+}
+
+.flag {
+  width: 24px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  background: transparent;
+  color: var(--deska-text-secondary);
+  font: 12px var(--deska-font-mono);
+  transition-property: background-color, color;
+  transition-duration: 120ms;
+}
+
+.flag:hover {
+  background: color-mix(in srgb, var(--deska-text) 8%, transparent);
+  color: var(--deska-text);
+}
+
+.flag[aria-pressed='true'] {
+  background: var(--deska-surface-raised);
+  color: var(--deska-text);
+  font-weight: 700;
+}
+
+.error {
+  margin: 0;
+  color: var(--deska-danger);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.muted {
+  color: var(--deska-text-secondary);
+}
+
+.panes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+  padding: 4px 10px 10px;
+}
+
+.pane {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+
+.pane .textarea {
+  flex: 1;
+  min-height: 56px;
+}
+
+.result {
+  flex: 1.4;
+}
+
+.result-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 20px;
+}
+
+.result-head h2 {
+  margin: 0;
+  font-weight: 400;
+}
+
+.count {
+  flex: 1;
+  color: var(--deska-text);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+}
+
+.result-head .quiet {
+  min-height: 22px;
+}
+
+.preview {
+  flex: 0 1 auto;
+  max-height: 50%;
+  min-height: 40px;
+  padding: 6px 8px;
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-surface);
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+  scrollbar-width: thin;
+}
+
+mark {
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--deska-accent) 32%, transparent);
+  color: inherit;
+  box-shadow: inset 0 -1.5px 0 var(--deska-accent);
+}
+
+mark.alt {
+  background: color-mix(in srgb, var(--deska-accent) 18%, transparent);
+}
+
+mark.empty {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin: 0 -1px;
+  vertical-align: text-bottom;
+  background: var(--deska-accent);
+  box-shadow: none;
+}
+
+.matches {
+  flex: 1;
+  min-height: 0;
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.matches li {
+  padding: 5px 2px;
+}
+
+.matches li + li {
+  border-top: 1px solid var(--deska-border);
+}
+
+.match-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.match-num {
+  min-width: 18px;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.match-text {
+  flex: 1;
+  min-width: 0;
+  font: 12px var(--deska-font-mono);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.match-at {
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.groups {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 1px 10px;
+  margin: 3px 0 0 26px;
+  font: 12px var(--deska-font-mono);
+}
+
+.groups dt {
+  color: var(--deska-text-secondary);
+}
+
+.groups dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 640px) {
+  .panes {
+    flex-direction: row;
+  }
+  .preview {
+    max-height: 45%;
+  }
+}
+
+@media (max-width: 320px) {
+  .pattern-row {
+    flex-wrap: wrap;
+  }
+  .flags {
+    margin-inline-start: 0;
+  }
+}
+
+/* A short panel scrolls as one page instead of squeezing every box. */
+@media (max-height: 380px) {
+  .panes {
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  .pane,
+  .result {
+    flex: none;
+  }
+  .pane .textarea {
+    flex: none;
+    height: 72px;
+  }
+  .preview {
+    max-height: none;
+  }
+  .matches {
+    flex: none;
+    overflow: visible;
+  }
+}

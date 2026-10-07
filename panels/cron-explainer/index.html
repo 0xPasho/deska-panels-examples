@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cron Explainer</title>
+    <link rel="stylesheet" href="app.css" />
+    <script src="/__deska/sdk.js"></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main id="app" aria-busy="true">
+      <form id="form" class="top" novalidate>
+        <label class="visually-hidden" for="expr">Cron expression</label>
+        <input id="expr" class="input mono expr" type="text" autocomplete="off" spellcheck="false" aria-describedby="error" placeholder="0 9 * * 1-5" />
+        <p id="error" class="error" hidden></p>
+        <div class="presets" role="group" aria-label="Examples">
+          <button type="button" class="chip" data-expr="*/15 * * * *">Every 15 minutes</button>
+          <button type="button" class="chip" data-expr="0 9 * * 1-5">Weekdays at 9</button>
+          <button type="button" class="chip" data-expr="0 0 1 * *">Monthly</button>
+          <button type="button" class="chip" data-expr="30 2 * * 0">Sundays at 2:30</button>
+        </div>
+      </form>
+
+      <div class="scroll">
+        <p id="words" class="words" aria-live="polite"></p>
+
+        <table id="fields" class="fields">
+          <caption class="visually-hidden">Each field</caption>
+          <tbody></tbody>
+        </table>
+
+        <section class="runs" aria-labelledby="runs-title">
+          <div class="runs-head">
+            <h2 id="runs-title" class="runs-title">Next runs</h2>
+            <div class="seg" role="group" aria-label="Clock the schedule runs on">
+              <button type="button" class="quiet" data-zone="local" aria-pressed="true">Your time</button>
+              <button type="button" class="quiet" data-zone="UTC" aria-pressed="false">UTC</button>
+            </div>
+          </div>
+          <ol id="runs" class="run-list"></ol>
+        </section>
+      </div>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+  </body>
+</html>

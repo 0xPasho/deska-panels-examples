@@ -1,6 +1,6 @@
 # Deska panel examples
 
-Fourteen open source community panels for [Deska](https://deska.dev), each
+Twenty-two open source community panels for [Deska](https://deska.dev), each
 one built to teach a different part of the panel SDK. Read one, copy it, or
 start your own from the [tutorial](docs/build-your-first-panel.md).
 
@@ -29,6 +29,14 @@ No build step, no server, no framework.
 | <img src="panels/net-radio/icon.svg" width="24" alt=""> | [Net Radio](panels/net-radio) | Streaming audio from declared hosts, play and pause from Extras, a compact layout for `place: 'extras'` | links | 7 |
 | <img src="panels/noise-machine/icon.svg" width="24" alt=""> | [Noise Machine](panels/noise-machine) | Web Audio with no network and no files, one player across many frames, stopping drawing while hidden | none | none |
 | <img src="panels/window-view/icon.svg" width="24" alt=""> | [Window View](panels/window-view) | Video from a declared host, pausing on visibility and idle to save power, crediting licensed media | links | 1 |
+| <img src="panels/daily-standup/icon.svg" width="24" alt=""> | [Daily Standup](panels/daily-standup) | Saving as the person types, flushed on hide; Markdown to the clipboard from a click or Cmd+Enter; dated notes compacted in storage | clipboard | none |
+| <img src="panels/regex-tester/icon.svg" width="24" alt=""> | [Regex Tester](panels/regex-tester) | Heavy work with no workers: timing each run and falling back to a Run button; building text with DOM nodes, never `innerHTML` | none | none |
+| <img src="panels/json-tools/icon.svg" width="24" alt=""> | [JSON Formatter](panels/json-tools) | Errors that point at a line and column; editing a textarea so Undo survives; not saving what is too big, and saying so | clipboard | none |
+| <img src="panels/contrast-checker/icon.svg" width="24" alt=""> | [Contrast Checker](panels/contrast-checker) | Showing the person's colors while the panel stays on theme tokens; Pass and Fail in words, not color alone | none | none |
+| <img src="panels/cron-explainer/icon.svg" width="24" alt=""> | [Cron Explainer](panels/cron-explainer) | A live `setTitle` refreshed on the minute while visible; validation that says what to change | none | none |
+| <img src="panels/unix-time/icon.svg" width="24" alt=""> | [Unix Time](panels/unix-time) | A clock ticking only while seen; one copy button per value; telling the person how their input was read | clipboard | none |
+| <img src="panels/breathing-timer/icon.svg" width="24" alt=""> | [Breathing Timer](panels/breathing-timer) | One page for the desk and Extras, a session kept as timestamps so every frame agrees, `prefers-reduced-motion` | none | none |
+| <img src="panels/sample-data/icon.svg" width="24" alt=""> | [Sample Data](panels/sample-data) | Seeded output that survives a reload; measuring against the 64 KB clipboard limit before Deska refuses | clipboard | none |
 
 Each panel's own README walks through its code, explains every permission and
 host it asks for, and lists what it could not do.
@@ -47,6 +55,16 @@ Discover, the way people get them.
 | ![Habit Streaks](docs/screenshots/deska/habit-streaks-dark.png) | ![Ship Countdown](docs/screenshots/deska/ship-countdown-light.png) |
 | ![Net Radio](docs/screenshots/deska/net-radio-dark.png) | ![Noise Machine](docs/screenshots/deska/noise-machine-light.png) |
 | ![Theme Inspector](docs/screenshots/deska/theme-inspector-dark.png) | ![SDK Playground](docs/screenshots/deska/sdk-playground-light.png) |
+
+The newest eight, in the preview host (`tools/preview/`) with Deska's dark
+and light themes:
+
+| | |
+| --- | --- |
+| ![Daily Standup](docs/screenshots/preview/daily-standup-dark.png) | ![Regex Tester](docs/screenshots/preview/regex-tester-light.png) |
+| ![JSON Formatter](docs/screenshots/preview/json-tools-dark.png) | ![Contrast Checker](docs/screenshots/preview/contrast-checker-light.png) |
+| ![Cron Explainer](docs/screenshots/preview/cron-explainer-dark.png) | ![Unix Time](docs/screenshots/preview/unix-time-light.png) |
+| ![Breathing Timer](docs/screenshots/preview/breathing-timer-dark.png) | ![Sample Data](docs/screenshots/preview/sample-data-light.png) |
 
 ## Use a panel
 

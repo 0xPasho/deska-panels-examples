@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "json-tools",
+  "name": "JSON Formatter",
+  "version": "1.0.0",
+  "description": "Format, minify and sort JSON, find the exact line of a syntax error, and compare two documents key by key.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#d4a72c",
+  "category": "dev",
+  "permissions": ["clipboard-write"],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 420, "height": 460 } }
+  }
+}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Unix Time</title>
+    <link rel="stylesheet" href="app.css" />
+    <script src="/__deska/sdk.js"></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main id="app" aria-busy="true">
+      <section class="now" aria-labelledby="now-label">
+        <span id="now-label" class="field-label">Now</span>
+        <span id="now" class="now-value mono"></span>
+        <button id="copy-now" class="icon-button" type="button" aria-label="Copy the current Unix time">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="7" height="8" rx="1.5" /><path d="M10.5 5.5V4a1.5 1.5 0 0 0-1.5-1.5H5A1.5 1.5 0 0 0 3.5 4v5A1.5 1.5 0 0 0 5 10.5h.5" /></svg>
+        </button>
+      </section>
+
+      <form id="form" class="top" novalidate>
+        <label class="field-label" for="input">Timestamp or date</label>
+        <div class="input-row">
+          <input id="input" class="input mono" type="text" autocomplete="off" spellcheck="false" aria-describedby="detected" placeholder="1767225600 or 2026-01-01T00:00Z" />
+          <button id="use-now" class="quiet" type="button">Now</button>
+        </div>
+        <p id="detected" class="detected" aria-live="polite"></p>
+      </form>
+
+      <div class="scroll">
+        <dl id="results" class="results"></dl>
+
+        <section class="zones" aria-labelledby="zones-title">
+          <div class="zones-head">
+            <h2 id="zones-title" class="zones-title">In other time zones</h2>
+            <button id="add-open" class="quiet" type="button" aria-expanded="false" aria-controls="add-form">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3.5v9M3.5 8h9" /></svg>
+              Add
+            </button>
+          </div>
+          <form id="add-form" class="add" hidden novalidate>
+            <label class="visually-hidden" for="zone">Time zone</label>
+            <input id="zone" class="input" type="text" list="zone-list" autocomplete="off" spellcheck="false" placeholder="Asia/Tokyo or Berlin" aria-describedby="zone-error" />
+            <datalist id="zone-list"></datalist>
+            <button class="primary" type="submit">Add</button>
+            <p id="zone-error" class="error" hidden></p>
+          </form>
+          <ul id="zone-rows" class="zone-rows"></ul>
+        </section>
+      </div>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+  </body>
+</html>

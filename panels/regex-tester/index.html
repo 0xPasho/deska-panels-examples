@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Regex Tester</title>
+    <link rel="stylesheet" href="app.css" />
+    <script src="/__deska/sdk.js"></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main id="app" aria-busy="true">
+      <form id="form" class="top" novalidate>
+        <div class="field">
+          <label class="field-label" for="pattern">Pattern</label>
+          <div class="pattern-row">
+            <span class="slash" aria-hidden="true">/</span>
+            <input id="pattern" class="input mono" type="text" autocomplete="off" spellcheck="false" aria-describedby="pattern-error" placeholder="\b(\w+)@(\w+)\.com\b" />
+            <span class="slash" aria-hidden="true">/</span>
+            <div class="flags" role="group" aria-label="Flags">
+              <button type="button" class="flag" data-flag="g" aria-pressed="true" title="Global: find every match">g</button>
+              <button type="button" class="flag" data-flag="i" aria-pressed="false" title="Ignore case">i</button>
+              <button type="button" class="flag" data-flag="m" aria-pressed="false" title="Multiline: ^ and $ match at each line">m</button>
+              <button type="button" class="flag" data-flag="s" aria-pressed="false" title="Dot all: . matches line breaks">s</button>
+              <button type="button" class="flag" data-flag="u" aria-pressed="false" title="Unicode">u</button>
+            </div>
+          </div>
+          <p id="pattern-error" class="error" hidden></p>
+        </div>
+
+        <div class="seg" role="group" aria-label="Mode">
+          <button type="button" class="quiet" data-mode="match" aria-pressed="true">Matches</button>
+          <button type="button" class="quiet" data-mode="replace" aria-pressed="false">Replace</button>
+        </div>
+
+        <div id="replace-field" class="field" hidden>
+          <label class="field-label" for="replacement">Replace with <span class="muted">($1, $&lt;name&gt;, $&amp;)</span></label>
+          <input id="replacement" class="input mono" type="text" autocomplete="off" spellcheck="false" />
+        </div>
+      </form>
+
+      <div class="panes">
+        <div class="field pane">
+          <label class="field-label" for="text">Test text</label>
+          <textarea id="text" class="textarea mono" spellcheck="false"></textarea>
+        </div>
+
+        <section class="pane result" aria-labelledby="result-label">
+          <div class="result-head">
+            <h2 id="result-label" class="field-label">Result</h2>
+            <span id="count" class="count" aria-live="polite"></span>
+            <button id="run" class="quiet" type="button" hidden>Run</button>
+          </div>
+          <div id="preview" class="preview mono" tabindex="0" aria-label="Text with matches marked"></div>
+          <ol id="matches" class="matches" aria-label="Matches"></ol>
+        </section>
+      </div>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+  </body>
+</html>

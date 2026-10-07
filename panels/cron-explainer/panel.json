@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "cron-explainer",
+  "name": "Cron Explainer",
+  "version": "1.0.0",
+  "description": "Paste a cron expression and read it in plain words, field by field, with its next runs in your time zone or UTC.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#2f8fb5",
+  "category": "dev",
+  "permissions": [],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 380, "height": 460 } }
+  }
+}

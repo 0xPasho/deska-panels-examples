@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "sample-data",
+  "name": "Sample Data",
+  "version": "1.0.0",
+  "description": "Placeholder text, fake people and UUIDs as JSON, CSV or a Markdown table, ready to paste into a mockup or a test.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#d9577a",
+  "category": "dev",
+  "permissions": ["clipboard-write"],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 400, "height": 440 } }
+  }
+}

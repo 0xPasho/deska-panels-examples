@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "contrast-checker",
+  "name": "Contrast Checker",
+  "version": "1.0.0",
+  "description": "Check a text and background color against WCAG 2 contrast levels, and get the nearest color that passes.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#7a5cf0",
+  "category": "dev",
+  "permissions": [],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 360, "height": 460 } }
+  }
+}

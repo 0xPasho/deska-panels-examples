@@ -1,0 +1,474 @@
+/* Every color, font and radius below comes from Deska's theme tokens, which
+   the SDK writes on <html>: the panel follows every theme and accent. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px/1.45 var(--deska-font-ui);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.no-transitions *,
+.no-transitions *::before,
+.no-transitions *::after {
+  transition: none !important;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--deska-focus);
+  outline-offset: 1px;
+}
+
+svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Buttons ---------------------------------------------------------------- */
+
+.quiet,
+.primary,
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 28px;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  white-space: nowrap;
+  transition-property: background-color, color, scale;
+  transition-duration: 120ms;
+  transition-timing-function: ease-out;
+}
+
+.quiet {
+  padding: 0 8px;
+  background: transparent;
+  color: var(--deska-text-secondary);
+}
+
+.quiet:hover {
+  background: color-mix(in srgb, var(--deska-text) 8%, transparent);
+  color: var(--deska-text);
+}
+
+.quiet[aria-pressed='true'] {
+  background: var(--deska-surface-raised);
+  color: var(--deska-text);
+}
+
+.primary {
+  padding: 0 12px;
+  background: var(--deska-accent);
+  color: var(--deska-on-accent);
+  font-weight: 500;
+}
+
+.primary:hover {
+  background: color-mix(in srgb, var(--deska-accent) 88%, var(--deska-text));
+}
+
+.icon-button {
+  width: 28px;
+  padding: 0;
+  background: transparent;
+  color: var(--deska-text-secondary);
+}
+
+.icon-button:hover {
+  background: color-mix(in srgb, var(--deska-text) 8%, transparent);
+  color: var(--deska-text);
+}
+
+.quiet:active,
+.primary:active,
+.icon-button:active {
+  scale: 0.96;
+}
+
+.quiet:disabled,
+.primary:disabled,
+.icon-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+  scale: none;
+}
+
+/* Fields ----------------------------------------------------------------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.field-label {
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-surface);
+  outline: none;
+  transition-property: border-color, box-shadow;
+  transition-duration: 120ms;
+}
+
+.input,
+.select {
+  height: 30px;
+  padding: 0 8px;
+}
+
+.textarea {
+  padding: 6px 8px;
+  resize: none;
+  line-height: 1.5;
+}
+
+.mono {
+  font-family: var(--deska-font-mono);
+  font-size: 12px;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--deska-text-tertiary);
+}
+
+.input:focus-visible,
+.textarea:focus-visible,
+.select:focus-visible {
+  border-color: var(--deska-focus);
+  box-shadow: 0 0 0 1px var(--deska-focus);
+  outline: none;
+}
+
+.input[aria-invalid='true'],
+.textarea[aria-invalid='true'] {
+  border-color: var(--deska-danger);
+}
+
+/* Segmented choice: a row of buttons where one is pressed. */
+.seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 2px;
+  border-radius: calc(var(--deska-radius-small) + 2px);
+  background: var(--deska-surface);
+}
+
+.seg .quiet {
+  min-height: 24px;
+  padding: 0 8px;
+}
+
+/* Status line at the foot of a panel. */
+.status {
+  flex: none;
+  margin: 0;
+  padding: 0 12px;
+  min-height: 0;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.status:not(:empty) {
+  padding: 6px 12px 8px;
+  border-top: 1px solid var(--deska-border);
+}
+
+.status.is-error {
+  color: var(--deska-danger);
+}
+
+.status.is-ok {
+  color: var(--deska-success);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0ms !important;
+  }
+  .quiet:active,
+  .primary:active,
+  .icon-button:active {
+    scale: none;
+  }
+}
+
+/* Panel ---------------------------------------------------------------------- */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+.colors {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 6px;
+  padding: 10px 10px 8px;
+}
+
+.color-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.color-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.color-input .input {
+  padding-inline-start: 34px;
+}
+
+.swatch {
+  position: absolute;
+  left: 4px;
+  width: 24px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  cursor: pointer;
+}
+
+.swatch::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.swatch::-webkit-color-swatch {
+  border: 0;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--deska-text) 18%, transparent);
+}
+
+.swap {
+  margin-bottom: 1px;
+}
+
+.error {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--deska-danger);
+  font-size: 12px;
+}
+
+.scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 2px 10px 12px;
+}
+
+.sample {
+  padding: 14px 14px 12px;
+  border-radius: var(--deska-radius);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--deska-text) 12%, transparent);
+}
+
+.sample p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.sample-large {
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.sample-normal {
+  margin-top: 6px !important;
+  font-size: 14px;
+}
+
+.ratio-line {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+
+.ratio {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+
+.verdict {
+  color: var(--deska-text-secondary);
+}
+
+.levels {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.levels li {
+  display: grid;
+  grid-template-columns: 1fr auto 52px;
+  align-items: center;
+  gap: 10px;
+  min-height: 30px;
+}
+
+.levels li + li {
+  border-top: 1px solid var(--deska-border);
+}
+
+.level-need {
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.pass .badge {
+  color: var(--deska-success);
+}
+
+.fail .badge {
+  color: var(--deska-danger);
+}
+
+.pass .badge::before,
+.fail .badge::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+.pass .badge::before {
+  --icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M2.5 6.5 5 9l4.5-6" fill="none" stroke="black" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+.fail .badge::before {
+  --icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="m3 3 6 6m0-6-6 6" fill="none" stroke="black" stroke-width="1.8" stroke-linecap="round"/></svg>');
+}
+
+.fix {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  padding: 8px 10px;
+  border-radius: var(--deska-radius);
+  background: var(--deska-surface);
+}
+
+.fix-text {
+  flex: 1;
+  min-width: 160px;
+}
+
+.fix code {
+  font: 12px var(--deska-font-mono);
+}
+
+.chip {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--deska-text) 18%, transparent);
+}
+
+.note {
+  margin: 0;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+}
+
+@media (max-width: 300px) {
+  .colors {
+    grid-template-columns: 1fr;
+  }
+  .swap {
+    justify-self: start;
+  }
+}

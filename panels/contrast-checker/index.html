@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contrast Checker</title>
+    <link rel="stylesheet" href="app.css" />
+    <script src="/__deska/sdk.js"></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main id="app" aria-busy="true">
+      <form id="colors" class="colors" novalidate>
+        <div class="color-row">
+          <label class="field-label" for="fg">Text</label>
+          <div class="color-input">
+            <input id="fg-pick" class="swatch" type="color" aria-label="Pick the text color" />
+            <input id="fg" class="input mono" type="text" autocomplete="off" spellcheck="false" aria-describedby="fg-error" />
+          </div>
+          <p id="fg-error" class="error" hidden></p>
+        </div>
+        <button id="swap" class="icon-button swap" type="button" aria-label="Swap text and background">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 2.5v11M2.5 11 5 13.5 7.5 11M11 13.5v-11M8.5 5 11 2.5 13.5 5" /></svg>
+        </button>
+        <div class="color-row">
+          <label class="field-label" for="bg">Background</label>
+          <div class="color-input">
+            <input id="bg-pick" class="swatch" type="color" aria-label="Pick the background color" />
+            <input id="bg" class="input mono" type="text" autocomplete="off" spellcheck="false" aria-describedby="bg-error" />
+          </div>
+          <p id="bg-error" class="error" hidden></p>
+        </div>
+      </form>
+
+      <div class="scroll">
+        <section class="result" aria-labelledby="ratio-label">
+          <div id="sample" class="sample">
+            <p class="sample-large">Large text, 24 px</p>
+            <p class="sample-normal">Body text at 14 px reads like this.</p>
+          </div>
+          <div class="ratio-line">
+            <h2 id="ratio-label" class="visually-hidden">Contrast ratio</h2>
+            <output id="ratio" class="ratio" for="fg bg" aria-live="polite"></output>
+            <span id="verdict" class="verdict"></span>
+          </div>
+          <ul class="levels" aria-label="WCAG levels">
+            <li data-min="4.5"><span class="level-name">Body text, AA</span><span class="level-need">4.5:1</span><span class="badge"></span></li>
+            <li data-min="7"><span class="level-name">Body text, AAA</span><span class="level-need">7:1</span><span class="badge"></span></li>
+            <li data-min="3"><span class="level-name">Large text, AA</span><span class="level-need">3:1</span><span class="badge"></span></li>
+            <li data-min="4.5"><span class="level-name">Large text, AAA</span><span class="level-need">4.5:1</span><span class="badge"></span></li>
+            <li data-min="3"><span class="level-name">Icons and controls</span><span class="level-need">3:1</span><span class="badge"></span></li>
+          </ul>
+          <div id="fix" class="fix" hidden>
+            <span class="fix-text">Nearest text color for AA: <code id="fix-color"></code></span>
+            <span id="fix-chip" class="chip" aria-hidden="true"></span>
+            <button id="fix-use" class="quiet" type="button">Use it</button>
+          </div>
+          <p class="note">Large text is 24 px, or 18.66 px when bold. A color with transparency is measured as it shows over the background.</p>
+        </section>
+      </div>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+  </body>
+</html>

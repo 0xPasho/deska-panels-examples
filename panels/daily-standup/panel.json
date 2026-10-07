@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "daily-standup",
+  "name": "Daily Standup",
+  "version": "1.0.0",
+  "description": "Yesterday, today and blockers, one note per day. Carry plans forward and copy the update as Markdown in one click.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#e0884a",
+  "category": "productivity",
+  "permissions": ["clipboard-write"],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 360, "height": 440 } }
+  }
+}

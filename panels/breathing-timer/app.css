@@ -1,0 +1,415 @@
+/* Every color, font and radius below comes from Deska's theme tokens, which
+   the SDK writes on <html>: the panel follows every theme and accent. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--deska-bg);
+  color: var(--deska-text);
+  font: 13px/1.45 var(--deska-font-ui);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.no-transitions *,
+.no-transitions *::before,
+.no-transitions *::after {
+  transition: none !important;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--deska-focus);
+  outline-offset: 1px;
+}
+
+svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Buttons ---------------------------------------------------------------- */
+
+.quiet,
+.primary,
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 28px;
+  border: 0;
+  border-radius: var(--deska-radius-small);
+  white-space: nowrap;
+  transition-property: background-color, color, scale;
+  transition-duration: 120ms;
+  transition-timing-function: ease-out;
+}
+
+.quiet {
+  padding: 0 8px;
+  background: transparent;
+  color: var(--deska-text-secondary);
+}
+
+.quiet:hover {
+  background: color-mix(in srgb, var(--deska-text) 8%, transparent);
+  color: var(--deska-text);
+}
+
+.quiet[aria-pressed='true'] {
+  background: var(--deska-surface-raised);
+  color: var(--deska-text);
+}
+
+.primary {
+  padding: 0 12px;
+  background: var(--deska-accent);
+  color: var(--deska-on-accent);
+  font-weight: 500;
+}
+
+.primary:hover {
+  background: color-mix(in srgb, var(--deska-accent) 88%, var(--deska-text));
+}
+
+.icon-button {
+  width: 28px;
+  padding: 0;
+  background: transparent;
+  color: var(--deska-text-secondary);
+}
+
+.icon-button:hover {
+  background: color-mix(in srgb, var(--deska-text) 8%, transparent);
+  color: var(--deska-text);
+}
+
+.quiet:active,
+.primary:active,
+.icon-button:active {
+  scale: 0.96;
+}
+
+.quiet:disabled,
+.primary:disabled,
+.icon-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+  scale: none;
+}
+
+/* Fields ----------------------------------------------------------------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.field-label {
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--deska-border);
+  border-radius: var(--deska-radius-small);
+  background: var(--deska-surface);
+  outline: none;
+  transition-property: border-color, box-shadow;
+  transition-duration: 120ms;
+}
+
+.input,
+.select {
+  height: 30px;
+  padding: 0 8px;
+}
+
+.textarea {
+  padding: 6px 8px;
+  resize: none;
+  line-height: 1.5;
+}
+
+.mono {
+  font-family: var(--deska-font-mono);
+  font-size: 12px;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--deska-text-tertiary);
+}
+
+.input:focus-visible,
+.textarea:focus-visible,
+.select:focus-visible {
+  border-color: var(--deska-focus);
+  box-shadow: 0 0 0 1px var(--deska-focus);
+  outline: none;
+}
+
+.input[aria-invalid='true'],
+.textarea[aria-invalid='true'] {
+  border-color: var(--deska-danger);
+}
+
+/* Segmented choice: a row of buttons where one is pressed. */
+.seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 2px;
+  border-radius: calc(var(--deska-radius-small) + 2px);
+  background: var(--deska-surface);
+}
+
+.seg .quiet {
+  min-height: 24px;
+  padding: 0 8px;
+}
+
+/* Status line at the foot of a panel. */
+.status {
+  flex: none;
+  margin: 0;
+  padding: 0 12px;
+  min-height: 0;
+  color: var(--deska-text-secondary);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.status:not(:empty) {
+  padding: 6px 12px 8px;
+  border-top: 1px solid var(--deska-border);
+}
+
+.status.is-error {
+  color: var(--deska-danger);
+}
+
+.status.is-ok {
+  color: var(--deska-success);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0ms !important;
+  }
+  .quiet:active,
+  .primary:active,
+  .icon-button:active {
+    scale: none;
+  }
+}
+
+/* Panel ---------------------------------------------------------------------- */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+.settings {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 8px;
+  padding: 10px 10px 0;
+}
+
+.select:disabled {
+  opacity: 0.6;
+}
+
+.stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex: 1;
+  min-height: 0;
+  padding: 8px 12px;
+}
+
+.orb-wrap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  /* As tall as the room allows, never wider than it is tall. */
+  flex: 1 1 0;
+  min-height: 48px;
+  max-height: 200px;
+  max-width: 100%;
+  aspect-ratio: 1;
+}
+
+.orb-halo,
+.orb {
+  grid-area: 1 / 1;
+  border-radius: 50%;
+}
+
+.orb-halo {
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--deska-accent) 35%, transparent);
+  background: color-mix(in srgb, var(--deska-accent) 6%, transparent);
+}
+
+/* --s goes 0 (empty lungs) to 1 (full); app.js sets it each frame. */
+.orb {
+  --s: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--deska-accent) 70%, var(--deska-bg)), color-mix(in srgb, var(--deska-accent) 40%, var(--deska-bg)));
+  scale: calc(0.42 + var(--s) * 0.58);
+  will-change: scale;
+}
+
+.phase-text {
+  text-align: center;
+}
+
+.phase {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.count {
+  margin: 2px 0 0;
+  min-height: 20px;
+  color: var(--deska-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  display: none;
+  width: min(100%, 220px);
+  height: 4px;
+  border-radius: 2px;
+  background: var(--deska-surface-raised);
+  overflow: hidden;
+}
+
+.bar span {
+  --p: 0;
+  display: block;
+  height: 100%;
+  width: calc(var(--p) * 100%);
+  background: var(--deska-accent);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px 10px;
+}
+
+.left {
+  flex: 1;
+  color: var(--deska-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.controls .primary {
+  min-width: 84px;
+  min-height: 32px;
+}
+
+/* No growing orb for people who asked for less motion: a static orb, the
+   count and a plain bar carry the rhythm. */
+@media (prefers-reduced-motion: reduce) {
+  .orb {
+    scale: 0.7;
+  }
+  .bar {
+    display: block;
+  }
+}
+
+/* Inside Extras the popover is small: a smaller orb, tighter edges. */
+.in-extras .settings {
+  padding-top: 8px;
+}
+
+.in-extras .orb-wrap {
+  max-height: 150px;
+}
+
+/* While breathing, the settings step aside. */
+.is-active .settings {
+  display: none;
+}
+
+@media (max-height: 300px) {
+  .settings .field-label {
+    display: none;
+  }
+  .phase {
+    font-size: 15px;
+  }
+  .stage {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 260px) {
+  .settings {
+    grid-template-columns: 1fr;
+  }
+}

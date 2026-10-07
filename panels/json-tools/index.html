@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JSON Formatter</title>
+    <link rel="stylesheet" href="app.css" />
+    <script src="/__deska/sdk.js"></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main id="app" aria-busy="true">
+      <header class="bar">
+        <div class="seg" role="group" aria-label="Mode">
+          <button type="button" class="quiet" data-mode="format" aria-pressed="true">Format</button>
+          <button type="button" class="quiet" data-mode="compare" aria-pressed="false">Compare</button>
+        </div>
+        <button id="copy" class="quiet" type="button">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="7" height="8" rx="1.5" /><path d="M10.5 5.5V4a1.5 1.5 0 0 0-1.5-1.5H5A1.5 1.5 0 0 0 3.5 4v5A1.5 1.5 0 0 0 5 10.5h.5" /></svg>
+          <span id="copy-label">Copy</span>
+        </button>
+      </header>
+
+      <section id="format-view" class="view" aria-label="Format">
+        <div class="tools">
+          <label class="inline">
+            <span class="visually-hidden">Indent</span>
+            <select id="indent" class="select">
+              <option value="2">2 spaces</option>
+              <option value="4">4 spaces</option>
+              <option value="tab">Tabs</option>
+            </select>
+          </label>
+          <label class="check">
+            <input id="sort" type="checkbox" />
+            Sort keys
+          </label>
+          <span class="grow"></span>
+          <button id="minify" class="quiet" type="button">Minify</button>
+          <button id="format" class="primary" type="button" aria-keyshortcuts="Meta+Enter Control+Enter">Format</button>
+        </div>
+        <label class="visually-hidden" for="source">JSON</label>
+        <textarea id="source" class="textarea mono editor" spellcheck="false" aria-describedby="summary" placeholder='Paste JSON here, like {"name": "Ada"}'></textarea>
+        <p id="summary" class="summary" aria-live="polite"></p>
+      </section>
+
+      <section id="compare-view" class="view" aria-label="Compare" hidden>
+        <div class="pair">
+          <div class="field">
+            <label class="field-label" for="left">Before</label>
+            <textarea id="left" class="textarea mono" spellcheck="false" placeholder="First JSON"></textarea>
+          </div>
+          <div class="field">
+            <label class="field-label" for="right">After</label>
+            <textarea id="right" class="textarea mono" spellcheck="false" placeholder="Second JSON"></textarea>
+          </div>
+        </div>
+        <div class="diff-head">
+          <h2 id="diff-title" class="diff-title" aria-live="polite">Differences</h2>
+        </div>
+        <ul id="diff" class="diff" aria-labelledby="diff-title"></ul>
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+  </body>
+</html>

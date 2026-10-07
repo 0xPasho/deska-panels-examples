@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "regex-tester",
+  "name": "Regex Tester",
+  "version": "1.0.0",
+  "description": "Try a JavaScript regular expression against your own text: live highlights, groups, flags and replace, all on your computer.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#3fa37a",
+  "category": "dev",
+  "permissions": [],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 400, "height": 460 } }
+  }
+}

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Daily Standup</title>
+    <link rel="stylesheet" href="app.css" />
+    <script src="/__deska/sdk.js"></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main id="app" aria-busy="true">
+      <header class="bar">
+        <div class="day-nav">
+          <button id="prev" class="icon-button" type="button" aria-label="Previous day">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5" /></svg>
+          </button>
+          <h1 id="day" class="day" aria-live="polite">Today</h1>
+          <button id="next" class="icon-button" type="button" aria-label="Next day">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3.5 4.5 4.5L6 12.5" /></svg>
+          </button>
+          <button id="today" class="quiet" type="button" hidden>Today</button>
+        </div>
+        <button id="copy" class="primary" type="button" aria-keyshortcuts="Meta+Enter Control+Enter">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="7" height="8" rx="1.5" /><path d="M10.5 5.5V4a1.5 1.5 0 0 0-1.5-1.5H5A1.5 1.5 0 0 0 3.5 4v5A1.5 1.5 0 0 0 5 10.5h.5" /></svg>
+          Copy
+        </button>
+      </header>
+
+      <p id="loading" class="message">Loading your notes</p>
+
+      <section id="failed" class="message" hidden>
+        <p class="message-title">Your notes did not load</p>
+        <p id="failed-detail"></p>
+        <button id="retry" class="quiet" type="button">Try again</button>
+      </section>
+
+      <form id="note" class="note" hidden novalidate>
+        <div class="field section">
+          <div class="section-head">
+            <label class="field-label" for="yesterday">Yesterday</label>
+            <button id="carry" class="link" type="button" hidden></button>
+          </div>
+          <textarea id="yesterday" class="textarea" rows="3" placeholder="What you finished"></textarea>
+        </div>
+        <div class="field section">
+          <div class="section-head"><label class="field-label" for="today-text">Today</label></div>
+          <textarea id="today-text" class="textarea" rows="3" placeholder="What you plan to do"></textarea>
+        </div>
+        <div class="field section">
+          <div class="section-head"><label class="field-label" for="blockers">Blockers</label></div>
+          <textarea id="blockers" class="textarea" rows="2" placeholder="Anything in your way, or leave empty"></textarea>
+        </div>
+        <p class="hint">One item per line. <kbd class="mod-key">⌘</kbd> <kbd>Enter</kbd> copies the update.</p>
+      </form>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+  </body>
+</html>

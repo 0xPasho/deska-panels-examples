@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "id": "breathing-timer",
+  "name": "Breathing Timer",
+  "version": "1.0.0",
+  "description": "A calm guide for box breathing, 4-7-8 and slow breaths, with a session that keeps time in Extras.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#3aa6a0",
+  "category": "ambient",
+  "permissions": [],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "global", "size": { "width": 340, "height": 400 } },
+    "extras": { "title": "Breathing Timer" }
+  }
+}

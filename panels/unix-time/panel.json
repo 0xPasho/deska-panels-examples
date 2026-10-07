@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "id": "unix-time",
+  "name": "Unix Time",
+  "version": "1.0.0",
+  "description": "Turn Unix timestamps into dates and dates into timestamps, in seconds or milliseconds, across the time zones you pick.",
+  "author": "Pasho",
+  "icon": "icon.svg",
+  "color": "#4c6ef5",
+  "category": "dev",
+  "permissions": ["clipboard-write"],
+  "network": [],
+  "sdk": 1,
+  "contributes": {
+    "panel": { "entry": "index.html", "scope": "workspace", "size": { "width": 380, "height": 460 } }
+  }
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sample Data</title>
+    <link rel="stylesheet" href="app.css" />
+    <script src="/__deska/sdk.js"></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main id="app" aria-busy="true">
+      <form id="form" class="options" novalidate>
+        <div class="seg" role="group" aria-label="Kind">
+          <button type="button" class="quiet" data-kind="text" aria-pressed="true">Text</button>
+          <button type="button" class="quiet" data-kind="people" aria-pressed="false">People</button>
+          <button type="button" class="quiet" data-kind="uuids" aria-pressed="false">UUIDs</button>
+        </div>
+
+        <div class="row">
+          <label class="field count">
+            <span class="field-label">How many</span>
+            <input id="count" class="input" type="number" inputmode="numeric" min="1" max="500" step="1" />
+          </label>
+
+          <label class="field" data-for="text">
+            <span class="field-label">Of</span>
+            <select id="unit" class="select">
+              <option value="paragraphs">Paragraphs</option>
+              <option value="sentences">Sentences</option>
+              <option value="words">Words</option>
+            </select>
+          </label>
+
+          <label class="field" data-for="people">
+            <span class="field-label">As</span>
+            <select id="format" class="select">
+              <option value="json">JSON</option>
+              <option value="csv">CSV</option>
+              <option value="markdown">Markdown table</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="check" data-for="text">
+          <input id="classic" type="checkbox" checked />
+          Start with "Lorem ipsum dolor sit amet"
+        </label>
+        <p id="count-error" class="error" hidden></p>
+      </form>
+
+      <div class="output-wrap">
+        <label class="visually-hidden" for="output">Generated data</label>
+        <textarea id="output" class="textarea output" readonly spellcheck="false"></textarea>
+      </div>
+
+      <footer class="actions">
+        <span id="size" class="size"></span>
+        <button id="shuffle" class="quiet" type="button">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4.5h2.2c1.2 0 2.2.6 2.9 1.6l1.8 3.8c.7 1 1.7 1.6 2.9 1.6h1.2M2.5 11.5h2.2c1 0 1.8-.4 2.5-1.1M9 5.6c.7-.7 1.5-1.1 2.5-1.1h1.2M12 2.5l2 2-2 2M12 9.5l2 2-2 2" /></svg>
+          Shuffle
+        </button>
+        <button id="copy" class="primary" type="button">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="7" height="8" rx="1.5" /><path d="M10.5 5.5V4a1.5 1.5 0 0 0-1.5-1.5H5A1.5 1.5 0 0 0 3.5 4v5A1.5 1.5 0 0 0 5 10.5h.5" /></svg>
+          Copy
+        </button>
+      </footer>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+  </body>
+</html>

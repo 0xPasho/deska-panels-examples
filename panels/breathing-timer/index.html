@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Breathing Timer</title>
+    <link rel="stylesheet" href="app.css" />
+    <script src="/__deska/sdk.js"></script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main id="app" aria-busy="true">
+      <div class="settings" id="settings">
+        <label class="field">
+          <span class="field-label">Pattern</span>
+          <select id="pattern" class="select"></select>
+        </label>
+        <label class="field">
+          <span class="field-label">Length</span>
+          <select id="minutes" class="select">
+            <option value="1">1 minute</option>
+            <option value="3">3 minutes</option>
+            <option value="5">5 minutes</option>
+            <option value="10">10 minutes</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="stage">
+        <div class="orb-wrap" aria-hidden="true">
+          <div class="orb-halo"></div>
+          <div id="orb" class="orb"></div>
+        </div>
+        <div class="phase-text">
+          <p id="phase" class="phase">Ready when you are</p>
+          <p id="count" class="count"></p>
+        </div>
+        <div id="bar" class="bar" aria-hidden="true"><span id="bar-fill"></span></div>
+      </div>
+
+      <!-- One sentence per phase change for screen readers, not every second. -->
+      <p id="announce" class="visually-hidden" aria-live="polite"></p>
+
+      <footer class="controls">
+        <span id="left" class="left"></span>
+        <button id="stop" class="quiet" type="button" hidden>End</button>
+        <button id="toggle" class="primary" type="button">Start</button>
+      </footer>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+  </body>
+</html>
